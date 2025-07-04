@@ -11,12 +11,19 @@ import {
   IonIcon,
   IonLabel,
   IonItem,
-  IonCol,
-  IonGrid,
+  IonButton,
+  IonButtons,
+  IonInput,
+  IonModal,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/react';
+import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location } from 'ionicons/icons';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconType } from 'react-icons';
+import "./Header.css";
+import ModalHeader from './ModalHeader';
 
 type HeaderProps = {
   icon?: IconType;
@@ -24,6 +31,7 @@ type HeaderProps = {
   SubHeading?: string;
   Heading?: string;
 };
+
 const listItem = [
   { icon: home, label: 'Homepage' },
   { icon: list, label: 'Categories' },
@@ -37,16 +45,33 @@ const listItem = [
   { icon: heart, label: 'About Us' }
 ]
 const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
 
+  const [searchTerm, setSearchTerm] = useState("");
+  //cart modal
+  const modal = useRef<HTMLIonModalElement>(null);
+  const input = useRef<HTMLIonInputElement>(null);
+
+  const [message, setMessage] = useState(
+    'This modal example uses triggers to automatically open a modal when the button is clicked.'
+  );
+
+  function confirm() {
+    modal.current?.dismiss(input.current?.value, 'confirm');
+  }
+
+  function onWillDismiss(event: CustomEvent<OverlayEventDetail>) {
+    if (event.detail.role === 'confirm') {
+      setMessage(`Hello, ${event.detail.data}!`);
+    }
+  }
   return (
     <>
       <IonMenu contentId="main-content">
-          <IonImg
-            src="https://askdemo-c24d7.web.app/assets/user.jpg"
-            className='px-3 py-4 profile-img'
-            alt="The Wisconsin State Capitol building in Madison, WI at night"
-          />
+        <IonImg
+          src="https://askdemo-c24d7.web.app/assets/user.jpg"
+          className='px-3 py-4 profile-img'
+          alt="The Wisconsin State Capitol building in Madison, WI at night"
+        />
         <IonContent className="ion-padding">
           <IonRow>
             <IonText className="font-semibold text-[22px]">Askbootstrap</IonText>
@@ -76,7 +101,7 @@ const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
           <IonText className="text-white text-base font-semibold">{Heading}</IonText>
         </IonRow>
         {cartIcon && (
-          <IonRow className="ms-auto">
+          <IonRow className="ms-auto" id="open-modal">
             <IonText className="text-2xl text-white relative after:absolute after:content-['3'] after:size-4 after:bg-orange-600 after:rounded-full after:text-white after:text-xs after:grid after:place-items-center after:-top-2 after:-right-2">
               {cartIcon({ size: '1em' })}
             </IonText>
@@ -90,6 +115,21 @@ const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
           debounce={300}
         />
       </IonHeader>
+      {/* cart modal */}
+      <IonModal ref={modal} trigger="open-modal" onWillDismiss={(event) => onWillDismiss(event)}>
+        <ModalHeader icon Heading='Cart' cartIcon={cartIcon}/>
+        <IonContent className="ion-padding">
+          <IonItem>
+            <IonInput
+              label="Enter your name"
+              labelPlacement="stacked"
+              ref={input}
+              type="text"
+              placeholder="Your name"
+            />
+          </IonItem>
+        </IonContent>
+      </IonModal>
     </>
   );
 };
