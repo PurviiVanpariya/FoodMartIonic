@@ -1,0 +1,16 @@
+.searchbar-input{
+    border-radius: 6px !important;
+}
+
+.plus-btn::part(native){
+    padding: 0px !important;
+}
+
+.profile-img::part(image){
+    border-radius: 50%;
+    width: 88px;
+    height: 88px;
+}
+.listMenu::part(native){
+    background-color: transparent !important;
+}
