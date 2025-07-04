@@ -4,6 +4,8 @@ import Header from '../components/header';
 import { IoMenu } from 'react-icons/io5';
 import { BsCart3 } from "react-icons/bs";
 import ProductCard from '../components/home/ProductCards';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const Home: React.FC = () => {
 
@@ -16,9 +18,35 @@ const Home: React.FC = () => {
         Heading='Bengaluru, India'
       />
       <IonContent fullscreen>
-        <IonRow>
-          <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-        </IonRow>
+        <Swiper className="mySwiper">
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+          </SwiperSlide>
+        </Swiper>
 
         <IonGrid className='flex justify-between py-3 px-2'>
           <IonImg src="/images/home/discount.jpg" alt="discount1" className='w-[49%] rounded-md' />
