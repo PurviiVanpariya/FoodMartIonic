@@ -11,25 +11,19 @@ import {
   IonIcon,
   IonLabel,
   IonItem,
-  IonButton,
-  IonButtons,
-  IonInput,
-  IonModal,
-  IonTitle,
-  IonToolbar,
 } from '@ionic/react';
-import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location } from 'ionicons/icons';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { IconType } from 'react-icons';
 import "./Header.css";
-import ModalHeader from './ModalHeader';
 
 type HeaderProps = {
   icon?: IconType;
   cartIcon?: IconType;
   SubHeading?: string;
   Heading?: string;
+  searchbar?: boolean;
+  cartClassName?: string
 };
 
 const listItem = [
@@ -44,29 +38,13 @@ const listItem = [
   { icon: clipboard, label: 'Order List' },
   { icon: heart, label: 'About Us' }
 ]
-const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
+const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName }: HeaderProps) => {
 
-  const [searchTerm, setSearchTerm] = useState("");
-  //cart modal
-  const modal = useRef<HTMLIonModalElement>(null);
-  const input = useRef<HTMLIonInputElement>(null);
+  const [searchTerm,] = useState("");
 
-  const [message, setMessage] = useState(
-    'This modal example uses triggers to automatically open a modal when the button is clicked.'
-  );
-
-  function confirm() {
-    modal.current?.dismiss(input.current?.value, 'confirm');
-  }
-
-  function onWillDismiss(event: CustomEvent<OverlayEventDetail>) {
-    if (event.detail.role === 'confirm') {
-      setMessage(`Hello, ${event.detail.data}!`);
-    }
-  }
   return (
     <>
-      <IonMenu contentId="main-content">
+      <IonMenu contentId="main-content" className='z-[999999]'>
         <IonImg
           src="https://askdemo-c24d7.web.app/assets/user.jpg"
           className='px-3 py-4 profile-img'
@@ -92,7 +70,7 @@ const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
           </IonList>
         </IonContent>
       </IonMenu>
-      <IonHeader id='main-content' className="relative -top-1 max-h-[130px] size-full bg-[#003049] py-2 px-3 flex flex-wrap gap-x-5 items-center !shadow-none">
+      <IonHeader id='main-content' className="relative max-h-[130px] h-fit size-full bg-[#003049] py-2 px-3 flex flex-wrap gap-x-5 !items-center !shadow-none">
         {icon && (
           <IonMenuButton className='text-white'></IonMenuButton>
         )}
@@ -102,34 +80,25 @@ const Header = ({ icon, SubHeading, Heading, cartIcon }: HeaderProps) => {
         </IonRow>
         {cartIcon && (
           <IonRow className="ms-auto" id="open-modal">
-            <IonText className="text-2xl text-white relative after:absolute after:content-['3'] after:size-4 after:bg-orange-600 after:rounded-full after:text-white after:text-xs after:grid after:place-items-center after:-top-2 after:-right-2">
+            <IonText className={` ${cartClassName} text-2xl text-white relative after:absolute after:content-['3'] after:size-4 after:bg-orange-600 after:rounded-full after:text-white after:text-xs after:grid after:place-items-center after:-top-2 after:-right-2`}>
               {cartIcon({ size: '1em' })}
             </IonText>
           </IonRow>
         )}
-        <IonSearchbar
-          style={{ "--box-shadow": "transparent", borderRadius: '22px !important' }}
-          className="h-10 !rounded-md !p-0"
-          placeholder="Search.."
-          value={searchTerm}
-          debounce={300}
-        />
+        {
+          searchbar && (
+            <IonSearchbar
+              style={{ "--box-shadow": "transparent", borderRadius: '22px !important' }}
+              className="h-10 !rounded-md !p-0 my-2"
+              placeholder="Search.."
+              value={searchTerm}
+              debounce={300}
+            />
+          )
+        }
       </IonHeader>
       {/* cart modal */}
-      <IonModal ref={modal} trigger="open-modal" onWillDismiss={(event) => onWillDismiss(event)}>
-        <ModalHeader icon Heading='Cart' cartIcon={cartIcon}/>
-        <IonContent className="ion-padding">
-          <IonItem>
-            <IonInput
-              label="Enter your name"
-              labelPlacement="stacked"
-              ref={input}
-              type="text"
-              placeholder="Your name"
-            />
-          </IonItem>
-        </IonContent>
-      </IonModal>
+
     </>
   );
 };

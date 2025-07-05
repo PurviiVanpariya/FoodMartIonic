@@ -1,6 +1,6 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonModal, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonGrid, IonImg, IonModal, IonPage, IonRow, IonSearchbar, IonText } from '@ionic/react';
 import { IoMenu } from 'react-icons/io5';
-import { BsCart3 } from "react-icons/bs";
+import { BsCart3, BsPersonCircle } from "react-icons/bs";
 
 import Header from '../components/header';
 import ProductCard from '../components/home/ProductCards';
@@ -8,9 +8,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import './Home.css';
+import { useRef, useState } from 'react';
+import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 
 const Home: React.FC = () => {
- 
+  const [searchTerm,] = useState("");
+
+  //cart modal
+  const modal = useRef<HTMLIonModalElement>(null);
+  const input = useRef<HTMLIonInputElement>(null);
+
+  const [message, setMessage] = useState(
+    'This modal example uses triggers to automatically open a modal when the button is clicked.'
+  );
+
+  function confirm() {
+    modal.current?.dismiss(input.current?.value, 'confirm');
+  }
+
+  function onWillDismiss(event: CustomEvent<OverlayEventDetail>) {
+    if (event.detail.role === 'confirm') {
+      setMessage(`Hello, ${event.detail.data}!`);
+    }
+  }
+
 
   return (
     <IonPage>
@@ -19,21 +40,10 @@ const Home: React.FC = () => {
         cartIcon={BsCart3}
         SubHeading='Delivery Location'
         Heading='Bengaluru, India'
+        searchbar={true}
       />
       <IonContent fullscreen>
         <Swiper className="mySwiper">
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
           <SwiperSlide>
             <IonImg src="/images/home/slider1.jpg" alt="slider1" />
           </SwiperSlide>
@@ -162,6 +172,25 @@ const Home: React.FC = () => {
           <IonImg src="/images/home/products.jpg" alt="products" />
         </IonRow>
       </IonContent>
+
+
+      <IonModal ref={modal} trigger="open-modal" onWillDismiss={(event) => onWillDismiss(event)}>
+        <IonContent className=" Modalbg-color !bg-[#F4F5F8]">
+          <Header
+            icon={IoMenu}
+            cartIcon={BsPersonCircle}
+            Heading='Cart'
+            cartClassName='after:hidden'
+          />
+          <IonSearchbar
+            style={{ "--box-shadow": "transparent", borderRadius: '22px !important' }}
+            className="h-10 !rounded-md !p-0"
+            placeholder="Search.."
+            value={searchTerm}
+            debounce={300}
+          />
+        </IonContent>
+      </IonModal>
 
       {/* <ExploreContainer /> */}
     </IonPage>
