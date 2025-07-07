@@ -16,6 +16,7 @@ import { card, cart, clipboard, grid, heart, home, list, person, pricetag, locat
 import { useState } from 'react';
 import { IconType } from 'react-icons';
 import "./Header.css";
+import { Link } from 'react-router-dom';
 
 type HeaderProps = {
   icon?: IconType;
@@ -24,28 +25,28 @@ type HeaderProps = {
   Heading?: string;
   searchbar?: boolean;
   cartClassName?: string
-  onMenuClick?: () => void;
+  onCartClick?: any;
 };
 
 const listItem = [
-  { icon: home, label: 'Homepage' },
-  { icon: list, label: 'Categories' },
-  { icon: grid, label: 'Shop List' },
-  { icon: pricetag, label: 'Single Product' },
-  { icon: cart, label: 'Shopping Cart' },
-  { icon: card, label: 'Checkout' },
-  { icon: person, label: 'My Profile' },
-  { icon: location, label: 'My Address' },
-  { icon: clipboard, label: 'Order List' },
-  { icon: heart, label: 'About Us' }
+  { icon: home,path:"/home", label: 'Homepage' },
+  { icon: list,path:"/categories", label: 'Categories' },
+  { icon: grid,path:"/home", label: 'Shop List' },
+  { icon: pricetag,path:"/home", label: 'Single Product' },
+  { icon: cart,path:"/home", label: 'Shopping Cart' },
+  { icon: card,path:"/home", label: 'Checkout' },
+  { icon: person,path:"/home", label: 'My Profile' },
+  { icon: location,path:"/home", label: 'My Address' },
+  { icon: clipboard,path:"/home", label: 'Order List' },
+  { icon: heart,path:"/home", label: 'About Us' }
 ]
-const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName , onMenuClick}: HeaderProps) => {
+const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick }: HeaderProps) => {
 
   const [searchTerm,] = useState("");
 
   return (
     <>
-      <IonMenu contentId="main-content" className='!z-[999999]'  swipeGesture={false} >
+      <IonMenu contentId="main-content">
         <IonImg
           src="https://askdemo-c24d7.web.app/assets/user.jpg"
           className='px-3 py-4 profile-img'
@@ -58,8 +59,14 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
           </IonRow>
           <IonList>
             {listItem.map((item, index) => (
+              <Link
+              to={item.path}
+              key={index}
+              className="text-decoration-none"
+              >
               <IonItem
                 key={index}
+                onClick={() => {item.path}}
                 lines="none"
                 button
                 className="text-[#86888F] listMenu hover:bg-zinc-100 transition-all duration-500 rounded-md"
@@ -67,20 +74,21 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
                 <IonIcon icon={typeof item.icon === 'string' ? item.icon : undefined} slot="start" className="text-xl" />
                 <IonLabel className='font-semibold'>{item.label}</IonLabel>
               </IonItem>
+              </Link>
             ))}
           </IonList>
         </IonContent>
       </IonMenu>
       <IonHeader id='main-content' className="relative max-h-[130px] h-fit size-full bg-[#003049] py-2 px-3 flex flex-wrap gap-x-5 !items-center !shadow-none">
-        {icon && (
-          <IonMenuButton className='text-white' onClick={onMenuClick}></IonMenuButton>
-        )}
+        {/* {icon && ( */}
+          <IonMenuButton className='text-white'></IonMenuButton>
+         {/* )} */}
         <IonRow className="flex flex-col">
           <IonText className="text-white text-xs">{SubHeading}</IonText>
           <IonText className="text-white text-base font-semibold">{Heading}</IonText>
         </IonRow>
         {cartIcon && (
-          <IonRow className="ms-auto" id="open-modal">
+          <IonRow className="ms-auto" id="open-modal" onClick={onCartClick}>
             <IonText className={` ${cartClassName} text-2xl text-white relative after:absolute after:content-['3'] after:size-4 after:bg-orange-600 after:rounded-full after:text-white after:text-xs after:grid after:place-items-center after:-top-2 after:-right-2`}>
               {cartIcon({ size: '1em' })}
             </IonText>
