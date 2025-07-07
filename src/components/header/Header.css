@@ -2,4 +2,6 @@
     background-color: #003049 !important;
 }
 
-/* .Modalbg-col */
+.Modalbg-color::part(scroll){
+    background-color: #F4F5F8;
+}  

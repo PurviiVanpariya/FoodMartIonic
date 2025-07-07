@@ -24,6 +24,7 @@ type HeaderProps = {
   Heading?: string;
   searchbar?: boolean;
   cartClassName?: string
+  onMenuClick?: () => void;
 };
 
 const listItem = [
@@ -38,13 +39,13 @@ const listItem = [
   { icon: clipboard, label: 'Order List' },
   { icon: heart, label: 'About Us' }
 ]
-const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName }: HeaderProps) => {
+const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName , onMenuClick}: HeaderProps) => {
 
   const [searchTerm,] = useState("");
 
   return (
     <>
-      <IonMenu contentId="main-content" className='z-[999999]'>
+      <IonMenu contentId="main-content" className='!z-[999999]'  swipeGesture={false} >
         <IonImg
           src="https://askdemo-c24d7.web.app/assets/user.jpg"
           className='px-3 py-4 profile-img'
@@ -72,7 +73,7 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
       </IonMenu>
       <IonHeader id='main-content' className="relative max-h-[130px] h-fit size-full bg-[#003049] py-2 px-3 flex flex-wrap gap-x-5 !items-center !shadow-none">
         {icon && (
-          <IonMenuButton className='text-white'></IonMenuButton>
+          <IonMenuButton className='text-white' onClick={onMenuClick}></IonMenuButton>
         )}
         <IonRow className="flex flex-col">
           <IonText className="text-white text-xs">{SubHeading}</IonText>
@@ -97,8 +98,6 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
           )
         }
       </IonHeader>
-      {/* cart modal */}
-
     </>
   );
 };

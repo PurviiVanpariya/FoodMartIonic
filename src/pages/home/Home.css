@@ -1,0 +1,58 @@
+.searchbar-input {
+    border-radius: 6px !important;
+}
+
+.plus-btn::part(native) {
+    padding: 0px !important;
+}
+
+.profile-img::part(image) {
+    border-radius: 50%;
+    width: 88px;
+    height: 88px;
+}
+
+.orangebtn::part(native) {
+    background-color: #E96125;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.listMenu::part(native) {
+    background-color: transparent !important;
+}
+
+.custom-input .native-input {
+    font-size: 12px !important;
+}
+
+.custom-input {
+    position: relative;
+}
+
+.custom-input::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: #E96125;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 100% 0.3s;
+}
+
+.custom-input:focus::after {
+    width: 100%;
+}
+
+.item-native::part(native) {
+    padding: 0px !important;
+}
+.item-inner{
+    padding: 0px !important;
+}
