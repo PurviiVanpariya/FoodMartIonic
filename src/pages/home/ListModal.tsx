@@ -71,7 +71,6 @@ const ListModal = ({ showList = false }) => {
                 showList && (
                     <IonPage>
                         <Header
-                            icon={IoMenu}
                             cartIcon={BsCart3}
                             Heading='Shop List'
                         />

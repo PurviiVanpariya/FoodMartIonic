@@ -16,6 +16,10 @@
     border-radius: 6px;
 }
 
+.radio-item::part(native) {
+padding-left: 0 !important;
+}
+
 .orangebtn::part(native) {
     background-color: #E96125;
     color: white;
@@ -27,6 +31,15 @@
 }
 
 .listMenu::part(native) {
+    background-color: transparent !important;
+}
+
+.back-button::part(native) {
+background-color: transparent !important;
+box-shadow: none !important;
+}
+
+.back-button::part(native)::after{
     background-color: transparent !important;
 }
 
@@ -57,6 +70,7 @@
 .item-native::part(native) {
     padding: 0px !important;
 }
-.item-inner{
+
+.item-inner {
     padding: 0px !important;
 }

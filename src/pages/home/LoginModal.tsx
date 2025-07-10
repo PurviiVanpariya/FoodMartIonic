@@ -17,7 +17,6 @@ const LoginModal = ({ showLogin = false }) => {
                 showLogin && (
                     <IonPage>
                         <Header
-                            icon={IoMenu}
                             Heading='Login'
                         />
                         <IonContent className="Modalbg-color ion-padding">

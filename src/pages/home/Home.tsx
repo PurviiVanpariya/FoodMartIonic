@@ -14,6 +14,7 @@ import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-com
 import CartModal from './CartModal';
 import ListModal from './ListModal';
 import ProductModal from './ProductModal';
+import NoteModal from './NoteModal';
 const products = [
   {
     image: "https://askdemo-c24d7.web.app/assets/small/3.jpg",
@@ -57,6 +58,13 @@ const Home: React.FC = () => {
   const onCartClick = () => {
     setShowCart(true);
   };
+
+  const [showNoteModal, setShowNoteModal] = useState(false);
+
+  const onNoteModalClick = () => {
+    setShowNoteModal(true);
+  };
+
   const [showProductModal, setShowProductModal] = useState(false);
 
   const onProductModal = () => [
@@ -97,13 +105,13 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <Header
-        icon={IoMenu}
         cartIcon={BsCart3}
         SubHeading='Delivery Location'
         Heading='Bengaluru, India'
         searchbar={true}
         onCartClick={onCartClick}
         EditIcon={true}
+        onNoteClick={onNoteModalClick}
       />
       <IonContent>
         <IonRefresher slot="fixed" pullFactor={0.5} pullMin={100} pullMax={200} onIonRefresh={handleRefresh}>
@@ -181,6 +189,7 @@ const Home: React.FC = () => {
       <CartModal showCart={showCart} />
       <ListModal showList={showList} />
       <ProductModal showProductModal={showProductModal} />
+      <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} />
     </IonPage>
   );
 };

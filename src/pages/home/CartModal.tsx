@@ -69,7 +69,6 @@ const CartModal = ({ showCart = false }) => {
                 showCart && (
                     <IonPage>
                         <Header
-                            icon={IoMenu}
                             cartIcon={BsPersonCircle}
                             Heading='Cart'
                             cartClassName='after:hidden'

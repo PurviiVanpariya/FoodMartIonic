@@ -12,25 +12,30 @@ import {
   IonLabel,
   IonItem,
   useIonRouter,
+  IonButton,
 } from '@ionic/react';
 import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location } from 'ionicons/icons';
 import { useState } from 'react';
 import { PiNotePencilDuotone } from "react-icons/pi";
 import { IconType } from 'react-icons';
 import "./Header.css";
+import { GoArrowLeft } from "react-icons/go";
+
 
 type HeaderProps = {
   EditIcon?: boolean;
-  icon?: IconType;
   cartIcon?: IconType;
   SubHeading?: string;
   Heading?: string;
   searchbar?: boolean;
   cartClassName?: string
   onCartClick?: any;
+  onNoteClick?: any;
+  onBackClick?: any;
+  showBackButton?: boolean;
 };
 
-const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick, EditIcon = false }: HeaderProps) => {
+const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick, EditIcon = false, onNoteClick, showBackButton, onBackClick }: HeaderProps) => {
 
   const [searchTerm,] = useState("");
 
@@ -56,13 +61,14 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
 
   return (
     <>
+
       <IonMenu contentId="main-content">
         <IonImg
           src="https://askdemo-c24d7.web.app/assets/user.jpg"
           className='px-3 py-4 profile-img'
           alt="The Wisconsin State Capitol building in Madison, WI at night"
         />
-        <IonContent className="ion-padding">
+        <IonContent className="Modalbg-color ion-padding">
           <IonRow>
             <IonText className="font-semibold text-[22px]">Askbootstrap</IonText>
             <IonText className="text-primary mb-6">iamosahan@gmail.com</IonText>
@@ -83,15 +89,22 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
           </IonList>
         </IonContent>
       </IonMenu>
+
       <IonHeader id='main-content' className="relative max-h-[130px] h-fit size-full bg-[#003049] py-2 px-3 flex flex-wrap gap-x-5 !items-center !shadow-none">
-        <IonMenuButton className='text-white'></IonMenuButton>
+        {showBackButton ? (
+          <IonButton className='text-white !mx-0 back-button' onClick={onBackClick}>
+            <GoArrowLeft className='!w-5 !h-5' />
+          </IonButton>
+        ) : (
+          <IonMenuButton className='text-white'></IonMenuButton>
+        )}
         <IonRow className="flex flex-col">
           <IonText className="text-white text-xs">{SubHeading}</IonText>
           <IonRow className='gap-2 items-center'>
             <IonText className="text-white text-base font-semibold">{Heading}</IonText>
             {
               EditIcon && (
-                <PiNotePencilDuotone className='text-white' />
+                <PiNotePencilDuotone className='text-white' onClick={onNoteClick} />
               )
             }
           </IonRow>

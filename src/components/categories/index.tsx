@@ -6,7 +6,6 @@ const Categories = () => {
   return (
     <IonPage>
        <Header
-        icon={IoMenu}
         cartIcon={IoAdd}
         Heading='Categories'
         cartClassName="after:hidden"

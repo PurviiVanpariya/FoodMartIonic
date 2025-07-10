@@ -1,5 +1,4 @@
-import { IonButton, IonCol, IonContent, IonIcon, IonImg, IonNote, IonPage, IonRow, IonText } from '@ionic/react'
-import { IoMenu } from 'react-icons/io5'
+import { IonButton, IonContent, IonIcon, IonImg, IonNote, IonPage, IonRow, IonText } from '@ionic/react'
 import { BsCart3 } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { ImStarEmpty } from "react-icons/im";
@@ -10,14 +9,13 @@ const ProductModal = ({ showProductModal = false }) => {
     return (
         <>
             {
-                showProductModal ? (
+                showProductModal && (
                     <IonPage className='bg-white h-full overflow-auto'>
                         <Header
-                            icon={IoMenu}
                             Heading='Single Product'
                             cartIcon={BsCart3}
                         />
-                        <IonContent className='!bg-[#F4F5F8] h-full overflow-auto'>
+                        <IonContent className='Modalbg-color h-full overflow-auto'>
                             <Swiper className="mySwiper h-96">
                                 <SwiperSlide>
                                     <IonImg src="https://askdemo-c24d7.web.app/assets/item/7.jpg" alt="slider1" />
@@ -83,8 +81,6 @@ const ProductModal = ({ showProductModal = false }) => {
                             </IonRow>
                         </IonContent>
                     </IonPage>
-                ) : (
-                    <>no modal</>
                 )
             }
         </>
