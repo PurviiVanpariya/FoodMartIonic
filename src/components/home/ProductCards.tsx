@@ -48,13 +48,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 <IonText className="text-lg font-bold text-black block">
                     ${price}{' '}
                     {originalPrice && (
-                        <IonText className="text-gray-500 line-through text-sm">
+                        <IonText className="text-primary line-through text-sm">
                             ${originalPrice}
                         </IonText>
                     )}
                 </IonText>
                 <IonRow className="flex items-center justify-between">
-                    <IonText className="text-xs text-gray-500">{weight}</IonText>
+                    <IonText className="text-xs text-primary">{weight}</IonText>
                     <IonNote className='flex items-center gap-2'>
                         <IonButton size="small" fill="clear" className='plus-btn bg-gray-600 rounded-full text-white !p-0 w-7 h-7'>
                             <IonIcon icon={remove} />

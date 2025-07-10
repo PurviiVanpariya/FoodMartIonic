@@ -1,11 +1,16 @@
 module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@ionic/react/dist/**/*.{js,jsx}"
+    './src/**/*.{js,ts,jsx,tsx}', // adjust according to your project
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: 'var(--ion-color-primary)',
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
-}
+};

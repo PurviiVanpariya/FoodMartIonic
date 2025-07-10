@@ -5,8 +5,7 @@ http://ionicframework.com/docs/theming/ */
 @import 'tailwindcss/utilities';
 
 :root {
-  --ion-color-primary: #003049;
-  --ion-color-secondary: #0f5999cc;
+  --ion-color-primary: #6C757D;
 }
 
 .poppins {

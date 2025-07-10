@@ -65,7 +65,7 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
         <IonContent className="ion-padding">
           <IonRow>
             <IonText className="font-semibold text-[22px]">Askbootstrap</IonText>
-            <IonText className="text-[#86888F] mb-6">iamosahan@gmail.com</IonText>
+            <IonText className="text-primary mb-6">iamosahan@gmail.com</IonText>
           </IonRow>
           <IonList>
             {listItem.map((item, index) => (
@@ -74,7 +74,7 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
                 button
                 onClick={() => handleNavigation(item.path)}
                 lines="none"
-                className="text-[#86888F] listMenu hover:bg-zinc-100 transition-all duration-500 rounded-md"
+                className="text-primary listMenu hover:bg-zinc-100 transition-all duration-500 rounded-md"
               >
                 <IonIcon icon={typeof item.icon === 'string' ? item.icon : undefined} slot="start" className="text-xl" />
                 <IonLabel className='font-semibold'>{item.label}</IonLabel>
