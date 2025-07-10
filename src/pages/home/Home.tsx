@@ -56,6 +56,7 @@ const Home: React.FC = () => {
         Heading='Bengaluru, India'
         searchbar={true}
         onCartClick={onCartClick}
+        EditIcon={true}
       />
       <IonContent fullscreen>
         <IonRefresher slot="fixed" pullFactor={0.5} pullMin={100} pullMax={200} onIonRefresh={handleRefresh}>
@@ -63,25 +64,16 @@ const Home: React.FC = () => {
         </IonRefresher>
         <Swiper className="mySwiper">
           <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider1.jpg" alt="slider1" />
           </SwiperSlide>
           <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonImg src="/images/home/slider1.jpg" alt="slider1" />
+            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider2.jpg" alt="slider2" />
           </SwiperSlide>
         </Swiper>
 
         <IonGrid className='flex justify-between py-3 px-2'>
-          <IonImg src="/images/home/discount.jpg" alt="discount1" className='w-[49%] rounded-md' />
-          <IonImg src="/images/home/discount2.jpg" alt="discount2" className='w-[49%] rounded-md' />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/1.jpg" alt="discount1" className='w-[49%] rounded-md' />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/2.jpg" alt="discount2" className='w-[49%] rounded-md' />
         </IonGrid>
 
         <section className='bg-[#e3641d] p-3'>
@@ -135,7 +127,7 @@ const Home: React.FC = () => {
         </section>
 
         <IonRow className='px-2 py-3'>
-          <IonImg src="/images/home/hygienic.jpg" alt="hygienic" className='rounded-md' />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/3.jpg" alt="hygienic" className='rounded-md' />
         </IonRow>
 
         <section className='p-3 space-y-6 bg-[#F4F5F8]'>
@@ -187,7 +179,7 @@ const Home: React.FC = () => {
         </section>
 
         <IonRow className='p-2'>
-          <IonImg src="/images/home/products.jpg" alt="products" />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/4.jpg" alt="products" />
         </IonRow>
       </IonContent>
       <CartModal showCart={showCart} />

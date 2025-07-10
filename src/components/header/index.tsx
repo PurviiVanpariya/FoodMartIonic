@@ -15,11 +15,12 @@ import {
 } from '@ionic/react';
 import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location } from 'ionicons/icons';
 import { useState } from 'react';
+import { PiNotePencilDuotone } from "react-icons/pi";
 import { IconType } from 'react-icons';
 import "./Header.css";
-import { Link } from 'react-router-dom';
 
 type HeaderProps = {
+  EditIcon?: boolean;
   icon?: IconType;
   cartIcon?: IconType;
   SubHeading?: string;
@@ -29,7 +30,7 @@ type HeaderProps = {
   onCartClick?: any;
 };
 
-const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick }: HeaderProps) => {
+const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick, EditIcon = false }: HeaderProps) => {
 
   const [searchTerm,] = useState("");
 
@@ -46,10 +47,10 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
     { icon: heart, path: "/home", label: 'About Us' }
   ]
 
-  const history = useIonRouter();
+  const router = useIonRouter();
 
   const handleNavigation = (path: string) => {
-    history.push(path);
+    router.push(path);
   };
 
 
@@ -86,7 +87,14 @@ const Header = ({ icon, SubHeading, Heading, cartIcon, searchbar = false, cartCl
         <IonMenuButton className='text-white'></IonMenuButton>
         <IonRow className="flex flex-col">
           <IonText className="text-white text-xs">{SubHeading}</IonText>
-          <IonText className="text-white text-base font-semibold">{Heading}</IonText>
+          <IonRow className='gap-2 items-center'>
+            <IonText className="text-white text-base font-semibold">{Heading}</IonText>
+            {
+              EditIcon && (
+                <PiNotePencilDuotone className='text-white' />
+              )
+            }
+          </IonRow>
         </IonRow>
         {cartIcon && (
           <IonRow className="ms-auto" id="open-modal" onClick={onCartClick}>
