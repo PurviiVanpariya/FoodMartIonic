@@ -11,14 +11,61 @@ import './Home.css';
 import { useRef, useState } from 'react';
 
 import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
-import LoginModal from './LoginModal';
 import CartModal from './CartModal';
+import ListModal from './ListModal';
+import ProductModal from './ProductModal';
+const products = [
+  {
+    image: "https://askdemo-c24d7.web.app/assets/small/3.jpg",
+    title: "Surf Excel Matic Top Load Detergent Powder (Carton)",
+    price: 600.99,
+    originalPrice: 800.99,
+    weight: "2 Kg",
+    quantity: 1,
+  },
+  {
+    image: "https://askdemo-c24d7.web.app/assets/small/7.jpg",
+    title: "Surf Excel Matic Top Load Detergent Powder (Carton)",
+    price: 600.99,
+    originalPrice: 800.99,
+    weight: "2 Kg",
+    quantity: 1,
+  },
+  {
+    image: "https://askdemo-c24d7.web.app/assets/small/1.jpg",
+    title: "Surf Excel Matic Top Load Detergent Powder (Carton)",
+    price: 600.99,
+    originalPrice: 800.99,
+    weight: "2 Kg",
+    quantity: 1,
+    isBanana: true,
+  },
+  {
+    image: "https://askdemo-c24d7.web.app/assets/small/6.jpg",
+    title: "Surf Excel Matic Top Load Detergent Powder (Carton)",
+    price: 600.99,
+    originalPrice: 800.99,
+    weight: "2 Kg",
+    quantity: 1,
+  },
+];
 
 const Home: React.FC = () => {
 
   const [showCart, setShowCart] = useState(false);
+
   const onCartClick = () => {
-    setShowCart(true); // or toggle: setShowCart(prev => !prev)
+    setShowCart(true);
+  };
+  const [showProductModal, setShowProductModal] = useState(false);
+
+  const onProductModal = () => [
+    setShowProductModal(true)
+  ]
+  const [showList, setShowList] = useState(false);
+
+  const onListClick = () => {
+    setShowList(true);
   };
 
   // Cart modal
@@ -58,16 +105,16 @@ const Home: React.FC = () => {
         onCartClick={onCartClick}
         EditIcon={true}
       />
-      <IonContent fullscreen>
+      <IonContent>
         <IonRefresher slot="fixed" pullFactor={0.5} pullMin={100} pullMax={200} onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
         <Swiper className="mySwiper">
           <SwiperSlide>
-            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider1.jpg" alt="slider1" />
+            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider1.jpg" alt="slider1" onClick={onListClick} />
           </SwiperSlide>
           <SwiperSlide>
-            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider2.jpg" alt="slider2" />
+            <IonImg src="https://askdemo-c24d7.web.app/assets/slider/slider2.jpg" alt="slider2" onClick={onListClick} />
           </SwiperSlide>
         </Swiper>
 
@@ -87,47 +134,20 @@ const Home: React.FC = () => {
           </IonRow>
 
           <IonGrid className='!px-0 grid grid-cols-2 justify-between gap-x-3 gap-y-4'>
-            <ProductCard
-              image="https://askdemo-c24d7.web.app/assets/small/3.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              discountLabel="50% OFF"
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard
-              image="https://askdemo-c24d7.web.app/assets/small/7.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              discountLabel="50% OFF"
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard
-              image="https://askdemo-c24d7.web.app/assets/small/1.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              discountLabel="50% OFF"
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard
-              image="https://askdemo-c24d7.web.app/assets/small/6.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              discountLabel="50% OFF"
-              weight="2 Kg"
-              quantity={1}
-            />
+            {products.map((product, index) => (
+              <ProductCard
+                key={index}
+                {...product}
+                discountLabel={product.isBanana ? "50% OFF" : undefined}
+                DiscountClassName={product.isBanana ? "bg-green-500 text-[9px] left-2 w-fit" : undefined}
+                onClick={onProductModal}
+              />
+            ))}
           </IonGrid>
         </section>
 
         <IonRow className='px-2 py-3'>
-          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/3.jpg" alt="hygienic" className='rounded-md' />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/3.jpg" alt="hygienic" className='rounded-md' onClick={onListClick} />
         </IonRow>
 
         <section className='p-3 space-y-6 bg-[#F4F5F8]'>
@@ -141,48 +161,26 @@ const Home: React.FC = () => {
           </IonRow>
 
           <IonGrid className='flex flex-col gap-3'>
-            <ProductCard className='shadow-md flex bg-white'
-              image="https://askdemo-c24d7.web.app/assets/small/3.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard className='shadow-md flex bg-white'
-              image="https://askdemo-c24d7.web.app/assets/small/7.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              discountLabel="50% OFF"
-              DiscountClassName="bg-green-500 text-[9px] left-2 w-fit"
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard className='shadow-md flex bg-white'
-              image="https://askdemo-c24d7.web.app/assets/small/1.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              weight="2 Kg"
-              quantity={1}
-            />
-            <ProductCard className='shadow-md flex bg-white'
-              image="https://askdemo-c24d7.web.app/assets/small/6.jpg"
-              title="Surf Excel Matic Top Load Detergent Powder (Carton)"
-              price={600.99}
-              originalPrice={800.99}
-              weight="2 Kg"
-              quantity={1}
-            />
+            {products.map((product, index) => (
+              <ProductCard
+                key={index}
+                className="shadow-md flex bg-white"
+                {...product}
+                discountLabel={product.isBanana ? "50% OFF" : undefined}
+                DiscountClassName={product.isBanana ? "bg-green-500 text-[9px] left-2 w-fit" : undefined}
+                onClick={onProductModal}
+              />
+            ))}
           </IonGrid>
         </section>
 
         <IonRow className='p-2'>
-          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/4.jpg" alt="products" />
+          <IonImg src="https://askdemo-c24d7.web.app/assets/ad/4.jpg" alt="products" onClick={onListClick} />
         </IonRow>
       </IonContent>
       <CartModal showCart={showCart} />
+      <ListModal showList={showList} />
+      <ProductModal showProductModal={showProductModal} />
     </IonPage>
   );
 };

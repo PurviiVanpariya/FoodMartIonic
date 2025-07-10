@@ -20,6 +20,7 @@ interface ProductCardProps {
     className?: string;
     DiscountClassName?: string;
     quantity: number;
+    onClick : () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -32,9 +33,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
     className,
     DiscountClassName,
     quantity,
+    onClick
 }) => {
     return (
-        <IonCard className={`rounded-lg shadow-md !m-0 ${className}`}>
+        <IonCard onClick={onClick} className={`rounded-lg shadow-md !m-0 ${className}`}>
             <IonNote className="relative">
                 {discountLabel && (
                     <IonText className={`${DiscountClassName} absolute top-1 right-1 bg-orange-500 text-white text-xs px-1 rounded`}>

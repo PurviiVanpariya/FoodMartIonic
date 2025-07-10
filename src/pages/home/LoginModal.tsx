@@ -14,7 +14,7 @@ const LoginModal = ({ showLogin = false }) => {
     return (
         <>
             {
-                showLogin ? (
+                showLogin && (
                     <IonPage>
                         <Header
                             icon={IoMenu}
@@ -48,9 +48,7 @@ const LoginModal = ({ showLogin = false }) => {
                             </IonCard>
                         </IonContent>
                     </IonPage>
-                ) : (
-                    <>showLogin</>
-                )
+                ) 
             }
         </>
     )

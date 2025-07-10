@@ -12,6 +12,10 @@
     height: 88px;
 }
 
+.rounded-img::part(image) {
+    border-radius: 6px;
+}
+
 .orangebtn::part(native) {
     background-color: #E96125;
     color: white;
