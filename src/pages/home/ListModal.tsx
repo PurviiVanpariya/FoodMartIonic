@@ -9,6 +9,7 @@ import LoginModal from './LoginModal'
 import { PiCardsThree } from 'react-icons/pi'
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import ProductModal from './ProductModal'
+import CartModal from './CartModal'
 
 const productList = [
     {
@@ -59,6 +60,12 @@ const ListModal = ({ showList = false }) => {
     };
 
 
+    const [showCart, setShowCart] = useState(false)
+
+    const onCartClick = () => {
+        setShowCart(true)
+    }
+
          const [showProductModal, setShowProductModal] = useState(false);
     
       const onProductModal = () => [
@@ -73,6 +80,7 @@ const ListModal = ({ showList = false }) => {
                         <Header
                             cartIcon={BsCart3}
                             Heading='Shop List'
+                            onCartClick={onCartClick}
                         />
                         <IonContent className="Modalbg-color ion-padding">
                              <IonSearchbar
@@ -85,7 +93,7 @@ const ListModal = ({ showList = false }) => {
                             <IonText className='text-sm flex justify-center my-2'>Placed on Fri, 22 Jun, 8 PM - 11 PM</IonText>
                              <IonImg src="https://askdemo-c24d7.web.app/assets/shop.jpg" alt="slider1" className='rounded-img mb-4' />
                             <IonCol className='!px-0'>
-                                <section className='mb-16 bg-[#F4F5F8] w-full mx-auto'>
+                                <section className='bg-[#F4F5F8] w-full mx-auto'>
                                     <IonGrid className='flex flex-col gap-3 p-0'>
                                         {productList.map((product, index) => (
                                             <ProductCard
@@ -98,7 +106,7 @@ const ListModal = ({ showList = false }) => {
                                     </IonGrid>
                                 </section>
                             </IonCol>
-                            <IonRow
+                            {/* <IonRow
                                 className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
                                 onClick={onLoginClick}
                             >
@@ -108,14 +116,14 @@ const ListModal = ({ showList = false }) => {
                                 <IonText className='text-white font-semibold flex items-center gap-1'>
                                     $433,00 <BsArrowRight />
                                 </IonText>
-                            </IonRow>
+                            </IonRow> */}
                         </IonContent>
+                        <CartModal showCart={showCart} />
+                        <LoginModal showLogin={showLogin} />
+                         <ProductModal showProductModal={showProductModal} />
                     </IonPage>
                 )
             }
-
-            <LoginModal showLogin={showLogin} />
-             <ProductModal showProductModal={showProductModal} />
         </>
     )
 }

@@ -9,26 +9,24 @@ import { LuLock } from "react-icons/lu";
 import LoginModal from './LoginModal';
 import { useState } from 'react';
 import AddressModal from './AddressModal';
-import WalletModal from './WalletModal';
 import OrderList from './OrderList';
-import WalletPage from './WalletPage';
 import NoteModal from './NoteModal';
+import WishListModal from './WishListModal';
+import WalletModal from './WalletModal';
 
 const Profile = ({ showProfile = false }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
     const [showAddressModal, setShowAddressModal] = useState(false)
-    const [showWalletModal, setShowWalletModal] = useState(false)
     const [showOrderListModal, setShowOrderListModal] = useState(false)
-    const [showWalletPageModal, setShowWalletPageModal] = useState(false)
     const [showNoteModal, setShowNoteModal] = useState(false);
-    const onWalletPageClick = () => {
-        setShowWalletPageModal(true)
+    const [showWishListModal, setShowWishListModal] = useState(false)
+    const [showWalletModal, setShowWalletModal] = useState(false)
+
+    const onWishListClick = () => {
+        setShowWishListModal(true)
     }
     const onOrderListClick = () => {
         setShowOrderListModal(true)
-    }
-    const onWalletClick = () => {
-        setShowWalletModal(true)
     }
     const onLoginClick = () => {
         setShowLoginModal(true)
@@ -36,6 +34,14 @@ const Profile = ({ showProfile = false }) => {
     const onAddressClick = () => {
         setShowAddressModal(true)
     }
+    const onNoteModalClick = () => {
+        setShowNoteModal(true)
+    }
+    const onWalletModalClick = () => {
+        setShowWalletModal(true)
+    }
+
+
     return (
         <>
             {
@@ -54,12 +60,12 @@ const Profile = ({ showProfile = false }) => {
                                         <IonText className='text-primary'><IoMdPaperPlane className='mx-auto' /></IonText>
                                         <IonText className='text-primary text-sm w-full text-center'>Edit Address</IonText>
                                     </IonCol>
-                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3'>
+                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3' onClick={onNoteModalClick}>
                                         <IonText className='text-primary'><CgProfile className='mx-auto' /></IonText>
-                                        <IonText onClick={() => setShowNoteModal(true)} className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
+                                        <IonText className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
                                     </IonCol>
                                 </IonRow>
-                                <IonRow className='flex justify-between w-full items-center pt-4 px-8'>
+                                <IonRow onClick={onWalletModalClick} className='flex justify-between w-full items-center pt-4 px-8'>
                                     <IonText className='font-semibold text-[#003049] text-base text-center flex items-center gap-2'><IoWalletOutline /> My Balance:</IonText>
                                     <IonText className='text-[#003049] text-base text-center font-semibold'>$24,000</IonText>
                                 </IonRow>
@@ -71,13 +77,13 @@ const Profile = ({ showProfile = false }) => {
                                 <IonRow onClick={onAddressClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200'>
                                     <IonText className='text-primary flex items-center gap-2'><IoLocationOutline /> My Address</IonText>
                                 </IonRow>
-                                <IonRow onClick={onWalletClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200'>
+                                <IonRow onClick={onWishListClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200'>
                                     <IonText className='text-primary flex items-center gap-2'><FaRegHeart /> Wish List</IonText>
                                 </IonRow>
                                 <IonRow onClick={onOrderListClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200'>
                                     <IonText className='text-primary flex items-center gap-2'><TfiMenuAlt /> Order List</IonText>
                                 </IonRow>
-                                <IonRow onClick={onWalletPageClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200 rounded-b-xl'>
+                                <IonRow onClick={onWalletModalClick} className='p-4 bg-white w-full border border-gray-200 hover:bg-gray-100 transition-all duration-200 rounded-b-xl'>
                                     <IonText className='text-primary flex items-center gap-2'><IoWalletOutline /> My Wallet</IonText>
                                 </IonRow>
                             </IonRow>
@@ -91,10 +97,10 @@ const Profile = ({ showProfile = false }) => {
                         </IonContent>
                         <LoginModal showLogin={showLoginModal} />
                         <AddressModal showAddress={showAddressModal} />
-                        <WalletModal showWallet={showWalletModal} />
                         <OrderList showOrderList={showOrderListModal} />
-                        <WalletPage showWalletPage={showWalletPageModal} />
                         <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
+                        <WishListModal showWishListModal={showWishListModal} />
+                        <WalletModal showWalletModal={showWalletModal}/>
                     </IonPage>
                 )
             }

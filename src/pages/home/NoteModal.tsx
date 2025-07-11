@@ -10,13 +10,12 @@ type NoteModalProps = {
     source?: 'profile' | 'checkout';
 }
 
-const NoteModal = ({ showNoteModal = false, setShowNoteModal, source = 'checkout' }: NoteModalProps) => {
+type PaymentModalProps = {
+    showPayment?: boolean;
+    setShowPayment?: any;
+}
 
-    const [showPayment, setShowPayment] = useState(false);
-
-    const showPaymentModal = () => [
-        setShowPayment(true)
-    ]
+export const PaymentModal = ({ showPayment, setShowPayment }: PaymentModalProps) => {
 
     const [showCongrats, setShowCongrats] = useState(false);
 
@@ -24,7 +23,74 @@ const NoteModal = ({ showNoteModal = false, setShowNoteModal, source = 'checkout
         setShowCongrats(true)
     ]
 
-    const handleSaveClick = () => {
+   
+
+    return (
+        <>
+            {showPayment && (
+                <IonPage className="bg-[#F4F5F8] bg-color">
+                    <Header
+                        showBackButton
+                        onBackClick={() => { setShowPayment(false) }}
+                        Heading="Payment" />
+                    <IonContent className="ion-padding Modalbg-color">
+                        <IonImg src="https://askdemo-c24d7.web.app/assets/payment_methods.png"></IonImg>
+                        <IonRow className="bg-white rounded-xl shadow-md pl-0 p-4 mt-4 space-y-4 w-full">
+                            <IonItem className="w-full">
+                                <IonInput
+                                    label="Card Number"
+                                    className='!text-[15px]'
+                                    labelPlacement="stacked"
+                                    type="text"
+                                    placeholder="Enter Card Number"
+                                />
+                            </IonItem>
+                            <IonItem className="w-full">
+                                <IonInput
+                                    label="mm/yy (Valid Thru)"
+                                    className='!text-[15px]'
+                                    labelPlacement="stacked"
+                                    type="text"
+                                    placeholder="Enter mm/yy"
+                                />
+                            </IonItem>
+                            <IonItem className="w-full">
+                                <IonInput
+                                    label="CVV"
+                                    className='!text-[15px]'
+                                    labelPlacement="stacked"
+                                    type="text"
+                                    placeholder="Enter CVV"
+                                />
+                            </IonItem>
+                            <IonItem className="w-full">
+                                <IonInput
+                                    label="Nickname (Optional)"
+                                    className='!text-[15px]'
+                                    labelPlacement="stacked"
+                                    type="text"
+                                    placeholder="Enter Nickname"
+                                />
+                            </IonItem>
+                            <Button label="SAVE" className="!w-full mt-4 ml-4" onClick={showCongratsModal}></Button>
+                        </IonRow>
+                    </IonContent>
+                    <CongratsModal showCongrats={showCongrats} />
+                </IonPage>
+            )}
+        </>
+    )
+}
+
+const NoteModal = ({ showNoteModal = false, setShowNoteModal,source }: NoteModalProps) => {
+
+    const [showPayment, setShowPayment] = useState(false);
+
+    const showPaymentModal = () => [
+        setShowPayment(true)
+    ]
+
+     const handleSaveClick = () => {
         if (source === 'profile') {
             setShowNoteModal?.(false);
         } else {
@@ -102,60 +168,10 @@ const NoteModal = ({ showNoteModal = false, setShowNoteModal, source = 'checkout
                                 </IonCol>
                             </IonRow>
                         </IonContent>
+                        <PaymentModal showPayment={showPayment} setShowPayment={setShowPayment} />
                     </IonPage>
                 )
             }
-            {showPayment && (
-                <IonPage className="bg-[#F4F5F8] bg-color">
-                    <Header
-                        showBackButton
-                        onBackClick={() => { setShowPayment(false) }}
-                        Heading="Payment" />
-                    <IonContent className="ion-padding Modalbg-color">
-                        <IonImg src="https://askdemo-c24d7.web.app/assets/payment_methods.png"></IonImg>
-                        <IonRow className="bg-white rounded-xl shadow-md pl-0 p-4 mt-4 space-y-4 w-full">
-                            <IonItem className="w-full">
-                                <IonInput
-                                    label="Card Number"
-                                    className='!text-[15px]'
-                                    labelPlacement="stacked"
-                                    type="text"
-                                    placeholder="Enter Card Number"
-                                />
-                            </IonItem>
-                            <IonItem className="w-full">
-                                <IonInput
-                                    label="mm/yy (Valid Thru)"
-                                    className='!text-[15px]'
-                                    labelPlacement="stacked"
-                                    type="text"
-                                    placeholder="Enter mm/yy"
-                                />
-                            </IonItem>
-                            <IonItem className="w-full">
-                                <IonInput
-                                    label="CVV"
-                                    className='!text-[15px]'
-                                    labelPlacement="stacked"
-                                    type="text"
-                                    placeholder="Enter CVV"
-                                />
-                            </IonItem>
-                            <IonItem className="w-full">
-                                <IonInput
-                                    label="Nickname (Optional)"
-                                    className='!text-[15px]'
-                                    labelPlacement="stacked"
-                                    type="text"
-                                    placeholder="Enter Nickname"
-                                />
-                            </IonItem>
-                            <Button label="SAVE" className="!w-full mt-4 ml-4" onClick={showCongratsModal}></Button>
-                        </IonRow>
-                    </IonContent>
-                </IonPage>
-            )}
-            <CongratsModal showCongrats={showCongrats} />
         </>
     )
 }

@@ -68,7 +68,7 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
           className='px-3 py-4 profile-img'
           alt="The Wisconsin State Capitol building in Madison, WI at night"
         />
-        <IonContent className="Modalbg-color ion-padding">
+        <IonContent className="ion-padding">
           <IonRow>
             <IonText className="font-semibold text-[22px]">Askbootstrap</IonText>
             <IonText className="text-primary mb-6">iamosahan@gmail.com</IonText>

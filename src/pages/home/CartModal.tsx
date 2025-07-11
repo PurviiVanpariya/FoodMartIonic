@@ -130,13 +130,12 @@ const CartModal = ({ showCart = false }) => {
                                 </IonText>
                             </IonRow>
                         </IonContent>
+                        <LoginModal showLogin={showLogin} />
+                        <ProductModal showProductModal={showProductModal} />
+                          <Profile showProfile={showProfile} />
                     </IonPage>
                 )
             }
-
-            <LoginModal showLogin={showLogin} />
-            <ProductModal showProductModal={showProductModal} />
-            <Profile showProfile={showProfile} />
         </>
     )
 }

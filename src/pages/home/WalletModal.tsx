@@ -1,83 +1,52 @@
-import { IonCol, IonContent, IonImg, IonPage, IonRow, IonSearchbar, IonText } from '@ionic/react'
-import React, { useState } from 'react'
+import { IonContent, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react'
+import React from 'react'
 import Header from '../../components/header'
-import Button from '../../components/common/Button';
+import { CgProfile } from 'react-icons/cg'
+import { IoWallet } from 'react-icons/io5'
+import Button from '../../components/common/Button'
 
-const walletData = [
-    {
-        storeName: "Super Store - Ludhiana",
-        imgSrc: "https://askdemo-c24d7.web.app/assets/small/7.jpg",
-        totalAmount: "$233,00",
-        productID: "GURDEEEP8343743",
-        originalAmount: "$233,00",
-        finalAmount: "$00,00",
-        deliveryCharges: null,  
-    },
-    {
-        storeName: "Singh Store - Goa",
-        imgSrc: "https://askdemo-c24d7.web.app/assets/small/5.jpg",  
-        totalAmount: "$533,00",
-        productID: "GURDEEEP8343743",
-        originalAmount: "$533,00",
-        finalAmount: "$644,00",  
-        deliveryCharges: "$510,00",  
-    },
-    {
-        storeName: "Osahan Store - Puna",
-        imgSrc: "https://askdemo-c24d7.web.app/assets/small/6.jpg", 
-        totalAmount: "$233,00",
-        productID: "GURDEEEP8343743",
-        originalAmount: "$233,00",
-        finalAmount: "$00,00", 
-        deliveryCharges: null,  
-    }
+const transactions = [
+    { id: 1, shop: "xyz Shop", amount: -45 },
+    { id: 2, shop: "jkd Shop", amount: -678 },
+    { id: 3, shop: "lis Shop", amount: -98 },
+    { id: 4, shop: "erf Shop", amount: -12 },
+    { id: 5, shop: "acs Shop", amount: -33 },
+    { id: 6, shop: "ioo Shop", amount: -9 },
+    { id: 7, shop: "lis Shop", amount: -98 },
+    { id: 8, shop: "erf Shop", amount: -12 },
+    { id: 9, shop: "acs Shop", amount: -33 },
+    { id: 10, shop: "ioo Shop", amount: -9 }
 ];
-const WalletModal = ({ showWallet = false }) => {
 
-    const [searchTerm,] = useState("");
+const WalletModal = ({ showWalletModal = false }) => {
+    
     return (
         <>
             {
-                showWallet && (
-                    <IonPage className='bg-white'>
-                        <Header Heading='My Wallet' />
-                        <IonContent className='bg-color ion-padding'>
-                            <IonSearchbar
-                                style={{ "--box-shadow": "transparent", borderRadius: '22px !important' }}
-                                className="h-10 !rounded-md !p-0 my-2"
-                                placeholder="Search.."
-                                value={searchTerm}
-                                debounce={300}
-                            />
-                            {
-                                walletData.map((data, index) => (
-                                    <IonRow key={index} className="bg-white rounded-xl py-4 shadow my-3">
-                                        <IonRow className='grid grid-cols-7 pb-2 px-4 border-b border-gray-200'>
-                                            <IonCol className='col-span-2'><IonImg src={data.imgSrc} className='h-20'></IonImg></IonCol>
-                                            <IonCol className='col-span-5 flex flex-col'>
-                                                <IonText className='font-semibold text-lg'>{data.storeName}</IonText>
-                                                <IonText className='text-blue-950 text-sm'>{data.totalAmount}</IonText>
-                                                <IonText className='text-sm'> Product ID: {data.productID}</IonText>
-                                            </IonCol>
-                                        </IonRow>
-                                        <IonRow className='w-full pt-3'>
-                                            <IonRow className='flex justify-between !w-full px-4 py-1'>
-                                                <IonText className='text-primary text-sm'>Original Payable amount</IonText>
-                                                <IonText className='text-sm'>{data.originalAmount}</IonText>
+                showWalletModal && (
+                    <IonPage>
+                        <Header Heading='My Wallet' cartIcon={CgProfile} cartClassName='after:hidden' />
+                        <IonContent className='bg-color'>
+                            <IonRow className='w-full bg-[#003049] px-6 pt-10 pb-24 text-center space-y-2'>
+                                <IonText className='w-full'><IoWallet className='text-8xl text-white mx-auto' /></IonText>
+                                <IonText className='w-full text-white font-medium text-lg'>Total Balance</IonText>
+                                <IonText className='w-full text-white font-semibold text-5xl'>$24,000</IonText>
+                                <Button label='ADD MONEY' className='!mt-5'></Button>
+                            </IonRow>
+                            <IonRow className='ion-padding'>
+                                <IonRow className='bg-white rounded-xl border border-gray-200 py-3 w-full -mt-24'>
+                                    {
+                                        transactions.map(transaction => (
+                                            <IonRow key={transaction.id} className='w-full flex justify-between items-center px-4 py-3 border-b'>
+                                                <IonText>{`Payment to ${transaction.shop}`}</IonText>
+                                                <IonText className='text-red-600 '>{`$${transaction.amount}`}</IonText>
                                             </IonRow>
-                                            <IonRow className='flex justify-between !w-full px-4 py-1'>
-                                                <IonText className='text-sm'>Final paid amount</IonText>
-                                                <IonText className='text-sm'>{data.finalAmount}</IonText>
-                                            </IonRow>
-                                            <IonRow className='px-4 py-2 mt-3 w-full'>
-                                                <Button label='SHOP NOW' className='w-full'></Button>
-                                            </IonRow>
-                                        </IonRow>
-                                    </IonRow>
-                                ))}
+                                        ))
+                                    }
+                                </IonRow>
+                            </IonRow>
                         </IonContent>
                     </IonPage>
-
                 )
             }
         </>

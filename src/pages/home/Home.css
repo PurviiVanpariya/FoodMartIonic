@@ -17,8 +17,24 @@
 }
 
 .radio-item::part(native) {
-padding-left: 0 !important;
+    padding-left: 0 !important;
 }
+
+.segment::part(indicator) {
+    display: none !important;
+}
+
+ion-segment-button.segment {
+    --color: #6b7280;
+    --color-hover: #E96125;
+    --color-checked: #E96125;
+     --background: #fff;           
+  --background-hover: #FFECE1;      
+  --background-checked: white; 
+    transition: color 0.2s;
+}
+
+
 
 .orangebtn::part(native) {
     background-color: #E96125;
@@ -35,11 +51,11 @@ padding-left: 0 !important;
 }
 
 .back-button::part(native) {
-background-color: transparent !important;
-box-shadow: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
-.back-button::part(native)::after{
+.back-button::part(native)::after {
     background-color: transparent !important;
 }
 

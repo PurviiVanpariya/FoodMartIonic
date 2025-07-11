@@ -1,11 +1,29 @@
 import { IonButton, IonContent, IonIcon, IonImg, IonNote, IonPage, IonRow, IonText } from '@ionic/react'
-import { BsCart3 } from 'react-icons/bs'
+import { BsArrowRight, BsCart3 } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { ImStarEmpty } from "react-icons/im";
 import Header from '../../components/header'
 import { PiCheckCircle } from 'react-icons/pi'
 import { add, remove } from 'ionicons/icons';
+import { useState } from 'react';
+import CartModal from './CartModal';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import LoginModal from './LoginModal';
+
 const ProductModal = ({ showProductModal = false }) => {
+
+    const [showCart, setShowCart] = useState(false)
+
+    const onCartClick = () => {
+        setShowCart(true)
+    }
+
+      const [showLogin, setShowLogin] = useState(false);
+    
+        const onLoginClick = () => {
+            setShowLogin(true);
+        };
+
     return (
         <>
             {
@@ -14,6 +32,7 @@ const ProductModal = ({ showProductModal = false }) => {
                         <Header
                             Heading='Single Product'
                             cartIcon={BsCart3}
+                            onCartClick={onCartClick}
                         />
                         <IonContent className='Modalbg-color h-full overflow-auto'>
                             <Swiper className="mySwiper h-96">
@@ -33,7 +52,7 @@ const ProductModal = ({ showProductModal = false }) => {
                                     <IonImg src="https://askdemo-c24d7.web.app/assets/item/10.jpg" alt="slider2" />
                                 </SwiperSlide>
                             </Swiper>
-                            <IonRow className='bg-[#F4F5F8] py-6 ion-padding space-y-3'>
+                            <IonRow className='bg-[#F4F5F8] py-6 ion-padding space-y-3 mb-16'>
                                 <IonRow className='bg-white shadow-lg rounded-md ion-padding w-full'>
                                     <IonText className='font-semibold max-w-xs text-lg'>Hygienix Anti-Bacterial Hand Sanitizer (Bottle)</IonText>
                                     <IonText className='font-semibold max-w-xs text-sm flex items-center text-primary gap-2 py-1'><PiCheckCircle /> Available in - 500 gm</IonText>
@@ -79,7 +98,20 @@ const ProductModal = ({ showProductModal = false }) => {
                                     </IonRow>
                                 </IonRow>
                             </IonRow>
+                                <IonRow
+                                                            className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
+                                                            onClick={onLoginClick}
+                                                        >
+                                                            <IonText className='text-white font-semibold flex items-center gap-1'>
+                                                                <AiOutlineShoppingCart /> Add to cart
+                                                            </IonText>
+                                                            <IonText className='text-white font-semibold flex items-center gap-1'>
+                                                                $433,00 <BsArrowRight />
+                                                            </IonText>
+                                                        </IonRow>
                         </IonContent>
+                        <CartModal showCart={showCart} />
+                           <LoginModal showLogin={showLogin} />
                     </IonPage>
                 )
             }
