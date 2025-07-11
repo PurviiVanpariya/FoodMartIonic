@@ -6,10 +6,16 @@ import { IonButton, IonCard, IonCardContent, IonCardSubtitle, IonCol, IonContent
 import Header from '../../components/header'
 
 import './Home.css'
+import NoteModal from './NoteModal';
 
 const LoginModal = ({ showLogin = false }) => {
 
     const [searchTerm,] = useState("");
+    const [showNoteModal, setShowNoteModal] = useState(false);
+
+    const onNoteModalClick = () => {
+        setShowNoteModal(true);
+    };
 
     return (
         <>
@@ -42,12 +48,13 @@ const LoginModal = ({ showLogin = false }) => {
                                             className='text-lg custom-input px-0 !w-full'
                                         ></IonInput>
                                     </IonItem>
-                                    <IonButton className='orangebtn mx-auto flex !mt-5'>Next</IonButton>
+                                    <IonButton onClick={onNoteModalClick} className='orangebtn mx-auto flex !mt-5'>Next</IonButton>
                                 </IonCardContent>
                             </IonCard>
                         </IonContent>
+                        <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} />
                     </IonPage>
-                ) 
+                )
             }
         </>
     )
