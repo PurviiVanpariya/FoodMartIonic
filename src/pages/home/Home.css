@@ -74,3 +74,11 @@ box-shadow: none !important;
 .item-inner {
     padding: 0px !important;
 }
+
+.profileImg::part(image){
+    border-radius: 50% !important;
+}
+
+.bg-color::part(scroll){
+    background-color: #F4F5F8 !important;
+}

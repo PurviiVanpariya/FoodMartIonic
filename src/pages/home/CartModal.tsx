@@ -9,6 +9,7 @@ import LoginModal from './LoginModal'
 import { PiCardsThree } from 'react-icons/pi'
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import ProductModal from './ProductModal'
+import Profile from './Profile'
 
 const products = [
     {
@@ -52,16 +53,20 @@ const CartModal = ({ showCart = false }) => {
     const [searchTerm,] = useState("");
 
     const [showLogin, setShowLogin] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
 
     const onLoginClick = () => {
         setShowLogin(true);
     };
+    const onProfileClick = () => {
+        setShowProfile(true);
+    };
 
-     const [showProductModal, setShowProductModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false);
 
-  const onProductModal = () => [
-    setShowProductModal(true)
-  ]
+    const onProductModal = () => [
+        setShowProductModal(true)
+    ]
 
     return (
         <>
@@ -70,6 +75,7 @@ const CartModal = ({ showCart = false }) => {
                     <IonPage>
                         <Header
                             cartIcon={BsPersonCircle}
+                            onCartClick={onProfileClick}
                             Heading='Cart'
                             cartClassName='after:hidden'
                         />
@@ -99,18 +105,18 @@ const CartModal = ({ showCart = false }) => {
                                         </IonRow>
                                     </IonCardContent>
                                 </IonCard>
-                                <section className='mb-16 bg-[#F4F5F8] w-full mx-auto'>
+                                <IonRow className='mb-16 bg-[#F4F5F8] w-full mx-auto'>
                                     <IonGrid className='flex flex-col gap-3 p-0'>
                                         {products.map((product, index) => (
                                             <ProductCard
                                                 key={index}
                                                 className="shadow-md flex bg-white"
                                                 {...product}
-                                                 onClick={onProductModal}
+                                                onClick={onProductModal}
                                             />
                                         ))}
                                     </IonGrid>
-                                </section>
+                                </IonRow>
                             </IonCol>
                             <IonRow
                                 className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
@@ -125,11 +131,12 @@ const CartModal = ({ showCart = false }) => {
                             </IonRow>
                         </IonContent>
                     </IonPage>
-                ) 
+                )
             }
 
             <LoginModal showLogin={showLogin} />
-              <ProductModal showProductModal={showProductModal} />
+            <ProductModal showProductModal={showProductModal} />
+            <Profile showProfile={showProfile} />
         </>
     )
 }
