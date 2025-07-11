@@ -7,9 +7,10 @@ import CongratsModal from './CongratsModal'
 type NoteModalProps = {
     showNoteModal?: boolean;
     setShowNoteModal?: any;
+    source?: 'profile' | 'checkout';
 }
 
-const NoteModal = ({ showNoteModal = false, setShowNoteModal }: NoteModalProps) => {
+const NoteModal = ({ showNoteModal = false, setShowNoteModal, source = 'checkout' }: NoteModalProps) => {
 
     const [showPayment, setShowPayment] = useState(false);
 
@@ -22,6 +23,14 @@ const NoteModal = ({ showNoteModal = false, setShowNoteModal }: NoteModalProps) 
     const showCongratsModal = () => [
         setShowCongrats(true)
     ]
+
+    const handleSaveClick = () => {
+        if (source === 'profile') {
+            setShowNoteModal?.(false);
+        } else {
+            setShowPayment(true);
+        }
+    };
 
     return (
         <>
@@ -89,7 +98,7 @@ const NoteModal = ({ showNoteModal = false, setShowNoteModal }: NoteModalProps) 
                                             <IonRadio slot="end" value="others" color="secondary" />
                                         </IonItem>
                                     </IonRadioGroup>
-                                    <Button label="SAVE" className="!w-full mt-4" onClick={showPaymentModal}></Button>
+                                    <Button label="SAVE" className="!w-full mt-4" onClick={handleSaveClick}></Button>
                                 </IonCol>
                             </IonRow>
                         </IonContent>

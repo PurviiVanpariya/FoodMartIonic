@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonRow, IonText } from '@ionic/react'
+import { IonContent, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react'
 import React from 'react'
 import Header from '../../components/header'
 import { CgProfile } from 'react-icons/cg'
@@ -19,6 +19,7 @@ const transactions = [
 ];
 
 const WalletPage = ({ showWalletPage = false }) => {
+    
     return (
         <>
             {

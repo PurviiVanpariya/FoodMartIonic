@@ -12,6 +12,7 @@ import AddressModal from './AddressModal';
 import WalletModal from './WalletModal';
 import OrderList from './OrderList';
 import WalletPage from './WalletPage';
+import NoteModal from './NoteModal';
 
 const Profile = ({ showProfile = false }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
@@ -19,6 +20,7 @@ const Profile = ({ showProfile = false }) => {
     const [showWalletModal, setShowWalletModal] = useState(false)
     const [showOrderListModal, setShowOrderListModal] = useState(false)
     const [showWalletPageModal, setShowWalletPageModal] = useState(false)
+    const [showNoteModal, setShowNoteModal] = useState(false);
     const onWalletPageClick = () => {
         setShowWalletPageModal(true)
     }
@@ -54,7 +56,7 @@ const Profile = ({ showProfile = false }) => {
                                     </IonCol>
                                     <IonCol className='border-l p-4 text-center flex flex-col gap-3'>
                                         <IonText className='text-primary'><CgProfile className='mx-auto' /></IonText>
-                                        <IonText className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
+                                        <IonText onClick={() => setShowNoteModal(true)} className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
                                     </IonCol>
                                 </IonRow>
                                 <IonRow className='flex justify-between w-full items-center pt-4 px-8'>
@@ -92,6 +94,7 @@ const Profile = ({ showProfile = false }) => {
                         <WalletModal showWallet={showWalletModal} />
                         <OrderList showOrderList={showOrderListModal} />
                         <WalletPage showWalletPage={showWalletPageModal} />
+                        <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
                     </IonPage>
                 )
             }
