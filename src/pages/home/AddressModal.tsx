@@ -38,7 +38,7 @@ const AddressModal = ({ showAddress = false }) => {
             {
                 showAddress && (
                     <IonPage className='bg-white'>
-                        <Header Heading='My Address' cartIcon={FaPlus} cartClassName='after:hidden'/>
+                        <Header Heading='My Address' cartIcon={FaPlus} onCartClick={onNoteModalClick} cartClassName='after:hidden'/>
                         <IonContent className='bg-color ion-padding'>
                             {
                                 addressData.map((address, index) => (

@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
-import ProductCard from '../../components/home/ProductCards'
-import { BsArrowRight, BsCart3, BsPersonCircle } from 'react-icons/bs'
-import { IonContent, IonSearchbar, IonCol, IonCardContent, IonRow, IonText, IonGrid, IonCard, IonPage, IonImg } from '@ionic/react'
-import { IoMenu } from 'react-icons/io5'
+import { useState } from 'react'
+import ProductCard from '../home/ProductCards'
+import { BsCart3 } from 'react-icons/bs'
+import { IonContent, IonSearchbar, IonCol, IonText, IonGrid, IonPage, IonImg } from '@ionic/react'
 import Header from '../../components/header'
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import LoginModal from './LoginModal'
-import { PiCardsThree } from 'react-icons/pi'
-import { FaRegCircleQuestion } from "react-icons/fa6";
-import ProductModal from './ProductModal'
-import CartModal from './CartModal'
+import CartModal from '../../pages/home/CartModal'
+import ProductModal from '../../pages/home/ProductModal'
 
 const productList = [
     {
@@ -49,16 +44,9 @@ const productList = [
 ];
 
 
-const ListModal = ({ showList = false }) => {
+const ShopList = ({ showList = false }) => {
 
     const [searchTerm,] = useState("");
-
-    const [showLogin, setShowLogin] = useState(false);
-
-    const onLoginClick = () => {
-        setShowLogin(true);
-    };
-
 
     const [showCart, setShowCart] = useState(false)
 
@@ -66,11 +54,11 @@ const ListModal = ({ showList = false }) => {
         setShowCart(true)
     }
 
-         const [showProductModal, setShowProductModal] = useState(false);
-    
-      const onProductModal = () => [
+    const [showProductModal, setShowProductModal] = useState(false);
+
+    const onProductModal = () => [
         setShowProductModal(true)
-      ]
+    ]
 
     return (
         <>
@@ -83,7 +71,7 @@ const ListModal = ({ showList = false }) => {
                             onCartClick={onCartClick}
                         />
                         <IonContent className="Modalbg-color ion-padding">
-                             <IonSearchbar
+                            <IonSearchbar
                                 style={{ "--box-shadow": "transparent", borderRadius: '22px !important' }}
                                 className="h-10 !rounded-md !p-0 shadow-md"
                                 placeholder="Search.."
@@ -91,7 +79,7 @@ const ListModal = ({ showList = false }) => {
                                 debounce={300}
                             />
                             <IonText className='text-sm flex justify-center my-2'>Placed on Fri, 22 Jun, 8 PM - 11 PM</IonText>
-                             <IonImg src="https://askdemo-c24d7.web.app/assets/shop.jpg" alt="slider1" className='rounded-img mb-4' />
+                            <IonImg src="https://askdemo-c24d7.web.app/assets/shop.jpg" alt="slider1" className='rounded-img mb-4' />
                             <IonCol className='!px-0'>
                                 <section className='bg-[#F4F5F8] w-full mx-auto'>
                                     <IonGrid className='flex flex-col gap-3 p-0'>
@@ -106,21 +94,9 @@ const ListModal = ({ showList = false }) => {
                                     </IonGrid>
                                 </section>
                             </IonCol>
-                            {/* <IonRow
-                                className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
-                                onClick={onLoginClick}
-                            >
-                                <IonText className='text-white font-semibold flex items-center gap-1'>
-                                    <AiOutlineShoppingCart /> Proceed to Checkout
-                                </IonText>
-                                <IonText className='text-white font-semibold flex items-center gap-1'>
-                                    $433,00 <BsArrowRight />
-                                </IonText>
-                            </IonRow> */}
                         </IonContent>
                         <CartModal showCart={showCart} />
-                        <LoginModal showLogin={showLogin} />
-                         <ProductModal showProductModal={showProductModal} />
+                        <ProductModal showProductModal={showProductModal} />
                     </IonPage>
                 )
             }
@@ -128,4 +104,4 @@ const ListModal = ({ showList = false }) => {
     )
 }
 
-export default ListModal
+export default ShopList

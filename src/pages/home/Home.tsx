@@ -1,5 +1,4 @@
 import { IonContent, IonGrid, IonImg, IonPage, IonRefresher, IonRefresherContent, IonRow, IonText, RefresherEventDetail } from '@ionic/react';
-import { IoMenu } from 'react-icons/io5';
 import { BsCart3 } from "react-icons/bs";
 
 import Header from '../../components/header';
@@ -12,9 +11,10 @@ import { useRef, useState } from 'react';
 
 import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 import CartModal from './CartModal';
-import ListModal from './ListModal';
 import ProductModal from './ProductModal';
 import NoteModal from './NoteModal';
+import ShopList from '../../components/shop-list';
+
 const products = [
   {
     image: "https://askdemo-c24d7.web.app/assets/small/3.jpg",
@@ -187,7 +187,7 @@ const Home: React.FC = () => {
         </IonRow>
       </IonContent>
       <CartModal showCart={showCart} />
-      <ListModal showList={showList} />
+      <ShopList showList={showList} />
       <ProductModal showProductModal={showProductModal} />
       <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} />
     </IonPage>

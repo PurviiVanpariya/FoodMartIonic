@@ -20,7 +20,7 @@ interface ProductCardProps {
     className?: string;
     DiscountClassName?: string;
     quantity: number;
-    onClick : () => void;
+    onClick: () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({

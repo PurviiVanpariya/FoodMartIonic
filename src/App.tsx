@@ -1,7 +1,6 @@
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/home/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,7 +24,7 @@ import '@ionic/react/css/display.css';
  * -----------------------------------------------------
  * For more info, please see:
  * https://ionicframework.com/docs/theming/dark-mode
- */
+*/
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
@@ -33,7 +32,9 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Home from './pages/home/Home';
 import Categories from './components/categories';
+import ShopList from './pages/shop-list/ShopList';
 
 setupIonicReact();
 
@@ -46,6 +47,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/categories">
           <Categories />
+        </Route>
+         <Route exact path="/shop-list">
+          <ShopList />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

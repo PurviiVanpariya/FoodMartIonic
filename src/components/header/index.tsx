@@ -42,7 +42,7 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
   const listItem = [
     { icon: home, path: "/home", label: 'Homepage' },
     { icon: list, path: "/categories", label: 'Categories' },
-    { icon: grid, path: "/home", label: 'Shop List' },
+    { icon: grid, path: "/shop-list", label: 'Shop List' },
     { icon: pricetag, path: "/home", label: 'Single Product' },
     { icon: cart, path: "/home", label: 'Shopping Cart' },
     { icon: card, path: "/home", label: 'Checkout' },

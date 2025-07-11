@@ -47,7 +47,7 @@ const Profile = ({ showProfile = false }) => {
             {
                 showProfile && (
                     <IonPage className='bg-white'>
-                        <Header Heading='My Profile' cartIcon={TfiMenuAlt} />
+                        <Header Heading='My Profile' cartIcon={TfiMenuAlt} cartClassName='after:hidden' />
                         <IonContent className='ion-padding !bg-[#F4F5F8] bg-color space-y-6'>
                             <IonRow className='bg-white border shadow pt-10 pb-3 rounded-xl'>
                                 <IonRow>
@@ -100,7 +100,7 @@ const Profile = ({ showProfile = false }) => {
                         <OrderList showOrderList={showOrderListModal} />
                         <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
                         <WishListModal showWishListModal={showWishListModal} />
-                        <WalletModal showWalletModal={showWalletModal}/>
+                        <WalletModal showWalletModal={showWalletModal} />
                     </IonPage>
                 )
             }
