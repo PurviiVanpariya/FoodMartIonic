@@ -34,7 +34,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import Home from './pages/home/Home';
 import Categories from './components/categories';
-import ShopList from './pages/shop-list/ShopList';
+import About from './pages/about/About';
+import ShopList from './pages/shoplist/ShopList';
 
 setupIonicReact();
 
@@ -48,8 +49,11 @@ const App: React.FC = () => (
         <Route exact path="/categories">
           <Categories />
         </Route>
-         <Route exact path="/shop-list">
-          <ShopList />
+         <Route exact path="/shoplist">
+          <ShopList showList={true}/>
+        </Route>
+         <Route exact path="/about">
+          <About />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

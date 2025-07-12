@@ -49,7 +49,7 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
     { icon: person, path: "/home", label: 'My Profile' },
     { icon: location, path: "/home", label: 'My Address' },
     { icon: clipboard, path: "/home", label: 'Order List' },
-    { icon: heart, path: "/home", label: 'About Us' }
+    { icon: heart, path: "/about", label: 'About Us' }
   ]
 
   const router = useIonRouter();

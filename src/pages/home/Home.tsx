@@ -13,7 +13,7 @@ import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-com
 import CartModal from './CartModal';
 import ProductModal from './ProductModal';
 import NoteModal from './NoteModal';
-import ShopList from '../../components/shop-list';
+import ShopList from '../shoplist/ShopList';
 
 const products = [
   {
