@@ -2,7 +2,7 @@ import { IonCol, IonContent, IonInput, IonItem, IonLabel, IonPage, IonRadio, Ion
 import { useState } from 'react'
 import Button from '../../components/common/Button'
 import Header from '../../components/header'
-import Profile from './Profile'
+import MyProfile from '../my-profile/MyProfile'
 
 type EditModalProps = {
     showEditProfileModal?: boolean;
@@ -81,7 +81,7 @@ const EditProfile = ({ showEditProfileModal = false, setShowEditProfileModal }: 
                                 </IonCol>
                             </IonRow>
                         </IonContent>
-                        <Profile showProfile={showProfile} />
+                        <MyProfile showMyProfile={showProfile} />
                     </IonPage>
                 )
             }

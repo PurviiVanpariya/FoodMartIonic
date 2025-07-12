@@ -6,7 +6,7 @@ import { IoHomeOutline } from 'react-icons/io5'
 import { RiDeleteBin6Line, RiShareForwardLine } from "react-icons/ri";
 import { LiaEdit } from "react-icons/lia";
 import { BiShoppingBag } from 'react-icons/bi';
-import NoteModal from './NoteModal'
+import NoteModal from '../home/NoteModal'
 
 const addressData = [
     {
@@ -26,7 +26,7 @@ const addressData = [
     }
 ];
 
-const AddressModal = ({ showAddress = false }) => {
+const MyAddress = ({ showMyAddress = false }) => {
     const [showNoteModal, setShowNoteModal] = useState(false);
 
     const onNoteModalClick = () => {
@@ -36,7 +36,7 @@ const AddressModal = ({ showAddress = false }) => {
     return (
         <>
             {
-                showAddress && (
+                showMyAddress && (
                     <IonPage className='bg-white'>
                         <Header Heading='My Address' cartIcon={FaPlus} onCartClick={onNoteModalClick} cartClassName='after:hidden'/>
                         <IonContent className='bg-color ion-padding'>
@@ -70,4 +70,4 @@ const AddressModal = ({ showAddress = false }) => {
     )
 }
 
-export default AddressModal;
+export default MyAddress;

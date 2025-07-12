@@ -10,9 +10,9 @@ import './Home.css';
 import { useRef, useState } from 'react';
 
 import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
-import CartModal from './CartModal';
-import ProductModal from './ProductModal';
 import NoteModal from './NoteModal';
+import SingleProduct from '../single-product/SingleProduct';
+import Cart from '../cart/Cart';
 import ShopList from '../shoplist/ShopList';
 
 const products = [
@@ -65,10 +65,10 @@ const Home: React.FC = () => {
     setShowNoteModal(true);
   };
 
-  const [showProductModal, setShowProductModal] = useState(false);
+  const [showSingleProduct, setShowSingleProduct] = useState(false);
 
   const onProductModal = () => [
-    setShowProductModal(true)
+    setShowSingleProduct(true)
   ]
   const [showList, setShowList] = useState(false);
 
@@ -186,9 +186,9 @@ const Home: React.FC = () => {
           <IonImg src="https://askdemo-c24d7.web.app/assets/ad/4.jpg" alt="products" onClick={onListClick} />
         </IonRow>
       </IonContent>
-      <CartModal showCart={showCart} />
+      <Cart showCart={showCart} />
       <ShopList showList={showList} />
-      <ProductModal showProductModal={showProductModal} />
+      <SingleProduct showSingleProduct={showSingleProduct} />
       <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} />
     </IonPage>
   );

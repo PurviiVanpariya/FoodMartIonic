@@ -6,11 +6,12 @@ import Header from '../../components/header'
 import { PiCheckCircle } from 'react-icons/pi'
 import { add, remove } from 'ionicons/icons';
 import { useState } from 'react';
-import CartModal from './CartModal';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import LoginModal from './LoginModal';
+import LoginModal from '../checkout/CheckOut';
+import Cart from '../cart/Cart';
+import CheckOut from '../checkout/CheckOut';
 
-const ProductModal = ({ showProductModal = false }) => {
+const SingleProduct = ({ showSingleProduct = false }) => {
 
     const [showCart, setShowCart] = useState(false)
 
@@ -18,16 +19,16 @@ const ProductModal = ({ showProductModal = false }) => {
         setShowCart(true)
     }
 
-      const [showLogin, setShowLogin] = useState(false);
-    
-        const onLoginClick = () => {
-            setShowLogin(true);
-        };
+    const [showLogin, setShowLogin] = useState(false);
+
+    const onLoginClick = () => {
+        setShowLogin(true);
+    };
 
     return (
         <>
             {
-                showProductModal && (
+                showSingleProduct && (
                     <IonPage className='bg-white h-full overflow-auto'>
                         <Header
                             Heading='Single Product'
@@ -98,24 +99,24 @@ const ProductModal = ({ showProductModal = false }) => {
                                     </IonRow>
                                 </IonRow>
                             </IonRow>
-                                <IonRow
-                                                            className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
-                                                            onClick={onLoginClick}
-                                                        >
-                                                            <IonText className='text-white font-semibold flex items-center gap-1'>
-                                                                <AiOutlineShoppingCart /> Add to cart
-                                                            </IonText>
-                                                            <IonText className='text-white font-semibold flex items-center gap-1'>
-                                                                $433,00 <BsArrowRight />
-                                                            </IonText>
-                                                        </IonRow>
+                            <IonRow
+                                className='fixed bottom-0 bg-[#E76224] w-full left-0 ion-padding justify-between py-3 border-t border-gray-200 cursor-pointer'
+                                onClick={onLoginClick}
+                            >
+                                <IonText className='text-white font-semibold flex items-center gap-1'>
+                                    <AiOutlineShoppingCart /> Add to cart
+                                </IonText>
+                                <IonText className='text-white font-semibold flex items-center gap-1'>
+                                    $433,00 <BsArrowRight />
+                                </IonText>
+                            </IonRow>
                         </IonContent>
-                        <CartModal showCart={showCart} />
-                           <LoginModal showLogin={showLogin} />
+                        <Cart showCart={showCart} />
+                        <CheckOut showLogin={showLogin} />
                     </IonPage>
                 )
             }
         </>
     )
 }
-export default ProductModal
+export default SingleProduct

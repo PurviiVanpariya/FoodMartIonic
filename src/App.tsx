@@ -36,6 +36,12 @@ import Home from './pages/home/Home';
 import Categories from './components/categories';
 import About from './pages/about/About';
 import ShopList from './pages/shoplist/ShopList';
+import SingleProduct from './pages/single-product/SingleProduct';
+import Cart from './pages/cart/Cart';
+import CheckOut from './pages/checkout/CheckOut';
+import MyProfile from './pages/my-profile/MyProfile';
+import MyAddress from './pages/my-address/MyAddress';
+import OrderList from './pages/order-list/OrderList';
 
 setupIonicReact();
 
@@ -51,6 +57,24 @@ const App: React.FC = () => (
         </Route>
          <Route exact path="/shoplist">
           <ShopList showList={true}/>
+        </Route>
+         <Route exact path="/single-product">
+          <SingleProduct showSingleProduct={true}/>
+        </Route>
+          <Route exact path="/cart">
+          <Cart showCart={true} />
+        </Route>
+          <Route exact path="/checkout">
+          <CheckOut showLogin={true} />
+        </Route>
+           <Route exact path="/my-profile">
+          <MyProfile showMyProfile={true} />
+        </Route>
+         <Route exact path="/my-address">
+          <MyAddress showMyAddress={true} />
+        </Route>
+         <Route exact path="/order-list">
+          <OrderList showOrderList={true} />
         </Route>
          <Route exact path="/about">
           <About />

@@ -4,7 +4,7 @@ import Header from '../../components/header'
 import Button from '../../components/common/Button';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { MdOutlineCancel } from "react-icons/md";
-import ProductModal from './ProductModal';
+import SingleProduct from '../single-product/SingleProduct';
 
 const walletData = [
     {
@@ -44,9 +44,9 @@ const walletData = [
 const OrderList = ({ showOrderList = false }) => {
 
     const [searchTerm,] = useState("");
-    const [showProductModal, setShowProductModal] = useState(false)
+    const [showSingleProduct, setShowSingleProduct] = useState(false)
     const onProductClick = () => {
-        setShowProductModal(true)
+        setShowSingleProduct(true)
     }
     return (
         <>
@@ -94,7 +94,7 @@ const OrderList = ({ showOrderList = false }) => {
                                     </IonRow>
                                 ))}
                         </IonContent>
-                        <ProductModal showProductModal={showProductModal} />
+                        <SingleProduct showSingleProduct={showSingleProduct} />
                     </IonPage>
 
                 )

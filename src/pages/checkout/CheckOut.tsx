@@ -7,12 +7,12 @@ import { IonButton, IonCard, IonCardContent, IonCardSubtitle, IonCol, IonContent
 
 import Header from '../../components/header'
 
-import './Home.css'
-import NoteModal, { PaymentModal } from './NoteModal';
+import './../home/Home.css'
+import NoteModal, { PaymentModal } from '../home/NoteModal';
 import { GoVerified } from 'react-icons/go';
-import CongratsModal from './CongratsModal';
+import CongratsModal from '../home/CongratsModal';
 
-const LoginModal = ({ showLogin = false }) => {
+const CheckOut = ({ showLogin = false }) => {
 
     const [showNoteModal, setShowNoteModal] = useState(false);
 
@@ -97,4 +97,4 @@ const LoginModal = ({ showLogin = false }) => {
     )
 }
 
-export default LoginModal
+export default CheckOut

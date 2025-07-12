@@ -1,7 +1,8 @@
 import { IonContent, IonImg, IonPage, IonRow, IonText } from '@ionic/react';
 import Button from '../../components/common/Button';
 import { useState } from 'react';
-import Profile from './Profile';
+import Profile from '../my-profile/MyProfile';
+import MyProfile from '../my-profile/MyProfile';
 
 type CongratsModalProps = {
     showCongrats?: boolean;
@@ -9,9 +10,9 @@ type CongratsModalProps = {
 }
 const CongratsModal = ({ showCongrats = false, setShowCongrats }: CongratsModalProps) => {
 
-    const [showProfile, setShowProfile] = useState(false)
+    const [showMyProfile, setShowMyProfile] = useState(false)
     const onProfileClick = () => {
-        setShowProfile(true)
+        setShowMyProfile(true)
     }
 
     return (
@@ -33,7 +34,7 @@ const CongratsModal = ({ showCongrats = false, setShowCongrats }: CongratsModalP
                                 <Button onClick={onProfileClick} label="RETURN TO STORE" className="!w-full mt-4"></Button>
                             </IonRow>
                         </IonContent>
-                        <Profile showProfile={showProfile} />
+                        <MyProfile showMyProfile={showMyProfile} />
                     </IonPage>
                 )
             }

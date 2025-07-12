@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProductCard from '../../components/home/ProductCards'
 import { BsArrowRight, BsPersonCircle } from 'react-icons/bs'
-import { IonContent, IonSearchbar, IonCol, IonCardContent, IonRow, IonText, IonGrid, IonCard, IonPage } from '@ionic/react'
-import { IoMenu } from 'react-icons/io5'
+import { IonContent, IonCol, IonCardContent, IonRow, IonText, IonGrid, IonCard, IonPage } from '@ionic/react'
 import Header from '../../components/header'
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import LoginModal from './LoginModal'
 import { PiCardsThree } from 'react-icons/pi'
 import { FaRegCircleQuestion } from "react-icons/fa6";
-import ProductModal from './ProductModal'
-import Profile from './Profile'
+import SingleProduct from '../single-product/SingleProduct'
+import CheckOut from '../checkout/CheckOut'
+import MyProfile from '../my-profile/MyProfile'
 
 const products = [
     {
@@ -48,24 +47,24 @@ const products = [
     },
 ];
 
-const CartModal = ({ showCart = false }) => {
+const Cart = ({ showCart = false }) => {
 
     const [searchTerm,] = useState("");
 
     const [showLogin, setShowLogin] = useState(false);
-    const [showProfile, setShowProfile] = useState(false);
+    const [showMyProfile, setShowMyProfile] = useState(false);
 
     const onLoginClick = () => {
         setShowLogin(true);
     };
     const onProfileClick = () => {
-        setShowProfile(true);
+        setShowMyProfile(true);
     };
 
-    const [showProductModal, setShowProductModal] = useState(false);
+    const [showSingleProduct, setShowSingleProduct] = useState(false);
 
     const onProductModal = () => [
-        setShowProductModal(true)
+        setShowSingleProduct(true)
     ]
 
     return (
@@ -130,9 +129,9 @@ const CartModal = ({ showCart = false }) => {
                                 </IonText>
                             </IonRow>
                         </IonContent>
-                        <LoginModal showLogin={showLogin} />
-                        <ProductModal showProductModal={showProductModal} />
-                          <Profile showProfile={showProfile} />
+                        <CheckOut showLogin={showLogin} />
+                        <SingleProduct showSingleProduct={showSingleProduct} />
+                        <MyProfile showMyProfile={showMyProfile} />
                     </IonPage>
                 )
             }
@@ -140,4 +139,4 @@ const CartModal = ({ showCart = false }) => {
     )
 }
 
-export default CartModal
+export default Cart

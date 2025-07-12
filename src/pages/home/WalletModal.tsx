@@ -1,11 +1,11 @@
-import { IonContent, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react'
-import React, { useState } from 'react'
+import { IonContent, IonPage, IonRow, IonText } from '@ionic/react'
+import { useState } from 'react'
 import Header from '../../components/header'
 import { CgProfile } from 'react-icons/cg'
 import { IoWallet } from 'react-icons/io5'
 import Button from '../../components/common/Button'
-import Profile from './Profile'
 import { PaymentModal } from './NoteModal'
+import MyProfile from '../my-profile/MyProfile'
 
 const transactions = [
     { id: 1, shop: "xyz Shop", amount: -45 },
@@ -22,9 +22,9 @@ const transactions = [
 
 const WalletModal = ({ showWalletModal = false }) => {
 
-    const [showProfile, setShowProfile] = useState(false)
+    const [showMyProfile, setShowMyProfile] = useState(false)
     const onProfileClick = () => {
-        setShowProfile(true)
+        setShowMyProfile(true)
     }
 
     const [showPayment, setShowPayment] = useState(false);
@@ -60,7 +60,7 @@ const WalletModal = ({ showWalletModal = false }) => {
                             </IonRow>
                         </IonContent>
                         <PaymentModal showPayment={showPayment} setShowPayment={setShowPayment} />
-                        <Profile showProfile={showProfile} />
+                        <MyProfile showMyProfile={showMyProfile} />
                     </IonPage>
                 )
             }

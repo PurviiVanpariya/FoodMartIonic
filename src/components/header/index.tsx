@@ -42,13 +42,13 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
   const listItem = [
     { icon: home, path: "/home", label: 'Homepage' },
     { icon: list, path: "/categories", label: 'Categories' },
-    { icon: grid, path: "/shop-list", label: 'Shop List' },
-    { icon: pricetag, path: "/home", label: 'Single Product' },
-    { icon: cart, path: "/home", label: 'Shopping Cart' },
-    { icon: card, path: "/home", label: 'Checkout' },
-    { icon: person, path: "/home", label: 'My Profile' },
-    { icon: location, path: "/home", label: 'My Address' },
-    { icon: clipboard, path: "/home", label: 'Order List' },
+    { icon: grid, path: "/shoplist", label: 'Shop List' },
+    { icon: pricetag, path: "/single-product", label: 'Single Product' },
+    { icon: cart, path: "/cart", label: 'Shopping Cart' },
+    { icon: card, path: "/checkout", label: 'Checkout' },
+    { icon: person, path: "/my-profile", label: 'My Profile' },
+    { icon: location, path: "/my-address", label: 'My Address' },
+    { icon: clipboard, path: "/order-list", label: 'Order List' },
     { icon: heart, path: "/about", label: 'About Us' }
   ]
 

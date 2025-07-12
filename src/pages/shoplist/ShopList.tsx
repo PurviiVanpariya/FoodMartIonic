@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { BsCart3 } from 'react-icons/bs'
 import { IonContent, IonSearchbar, IonCol, IonText, IonGrid, IonPage, IonImg } from '@ionic/react'
-import CartModal from '../home/CartModal'
-import ProductModal from '../home/ProductModal'
 import Header from '../../components/header'
 import ProductCard from '../../components/home/ProductCards'
+import SingleProduct from '../single-product/SingleProduct'
+import Cart from '../cart/Cart'
+
 const productList = [
     {
         image: "https://askdemo-c24d7.web.app/assets/small/3.jpg",
@@ -42,15 +43,18 @@ const productList = [
     },
 ];
 const ShopList = ({ showList = false }) => {
+
     const [searchTerm,] = useState("");
     const [showCart, setShowCart] = useState(false)
     const onCartClick = () => {
         setShowCart(true)
     }
-    const [showProductModal, setShowProductModal] = useState(false);
+
+    const [showSingleProduct, setShowSingleProduct] = useState(false);
     const onProductModal = () => [
-        setShowProductModal(true)
+        setShowSingleProduct(true)
     ]
+
     return (
         <>
             {
@@ -86,8 +90,8 @@ const ShopList = ({ showList = false }) => {
                                 </section>
                             </IonCol>
                         </IonContent>
-                        <CartModal showCart={showCart} />
-                        <ProductModal showProductModal={showProductModal} />
+                        <Cart showCart={showCart} />
+                        <SingleProduct showSingleProduct={showSingleProduct} />
                     </IonPage>
                 )
             }

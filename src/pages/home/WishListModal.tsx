@@ -2,7 +2,7 @@ import { IonCol, IonContent, IonImg, IonPage, IonRow, IonSearchbar, IonText } fr
 import React, { useState } from 'react'
 import Header from '../../components/header'
 import Button from '../../components/common/Button';
-import ProductModal from './ProductModal';
+import SingleProduct from '../single-product/SingleProduct';
 
 const walletData = [
     {
@@ -34,7 +34,7 @@ const walletData = [
     }
 ];
 const WishListModal = ({ showWishListModal = false }) => {
-    const [showProductModal , setShowProductModal] = useState(false)
+    const [showSingleProduct , setshowSingleProduct] = useState(false)
     const [searchTerm,] = useState("");
     return (
         <>
@@ -71,13 +71,13 @@ const WishListModal = ({ showWishListModal = false }) => {
                                                 <IonText className='text-sm'>{data.finalAmount}</IonText>
                                             </IonRow>
                                             <IonRow className='px-4 py-2 mt-3 w-full'>
-                                                <Button onClick={() => setShowProductModal(true)} label='SHOP NOW' className='w-full'></Button>
+                                                <Button onClick={() => setshowSingleProduct(true)} label='SHOP NOW' className='w-full'></Button>
                                             </IonRow>
                                         </IonRow>
                                     </IonRow>
                                 ))}
                         </IonContent>
-                        <ProductModal showProductModal={showProductModal}/>
+                        <SingleProduct showSingleProduct={showSingleProduct}/>
                     </IonPage>
 
                 )

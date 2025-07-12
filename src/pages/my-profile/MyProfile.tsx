@@ -6,23 +6,23 @@ import { CgProfile } from "react-icons/cg";
 import { IoLocationOutline, IoWalletOutline } from "react-icons/io5";
 import { FaRegHeart } from 'react-icons/fa6';
 import { LuLock } from "react-icons/lu";
-import LoginModal from './LoginModal';
 import { useState } from 'react';
-import AddressModal from './AddressModal';
-import OrderList from './OrderList';
-import NoteModal from './NoteModal';
-import WishListModal from './WishListModal';
-import WalletModal from './WalletModal';
-import EditProfile from './EditProfile';
+import AddressModal from '../my-address/MyAddress';
+import OrderList from '../order-list/OrderList';
+import NoteModal from '../home/NoteModal';
+import WishListModal from '../home/WishListModal';
+import WalletModal from '../home/WalletModal';
+import CheckOut from '../checkout/CheckOut';
+import MyAddress from '../my-address/MyAddress';
 
-const Profile = ({ showProfile = false }) => {
+const MyProfile = ({ showMyProfile = false }) => {
+
     const [showLoginModal, setShowLoginModal] = useState(false)
     const [showAddressModal, setShowAddressModal] = useState(false)
     const [showOrderListModal, setShowOrderListModal] = useState(false)
     const [showNoteModal, setShowNoteModal] = useState(false);
     const [showWishListModal, setShowWishListModal] = useState(false)
     const [showWalletModal, setShowWalletModal] = useState(false)
-    const [showEditProfileModal, setShowEditProfileModal] = useState(false)
 
     const onWishListClick = () => {
         setShowWishListModal(true)
@@ -36,18 +36,17 @@ const Profile = ({ showProfile = false }) => {
     const onAddressClick = () => {
         setShowAddressModal(true)
     }
+    const onNoteModalClick = () => {
+        setShowNoteModal(true)
+    }
     const onWalletModalClick = () => {
         setShowWalletModal(true)
     }
-     const onEditProfileModalClick = () => {
-        setShowEditProfileModal(true)
-    }
-
 
     return (
         <>
             {
-                showProfile && (
+                showMyProfile && (
                     <IonPage className='bg-white'>
                         <Header Heading='My Profile' cartIcon={TfiMenuAlt} cartClassName='after:hidden' />
                         <IonContent className='ion-padding !bg-[#F4F5F8] bg-color space-y-6'>
@@ -62,7 +61,7 @@ const Profile = ({ showProfile = false }) => {
                                         <IonText className='text-primary'><IoMdPaperPlane className='mx-auto' /></IonText>
                                         <IonText className='text-primary text-sm w-full text-center'>Edit Address</IonText>
                                     </IonCol>
-                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3' onClick={onEditProfileModalClick}>
+                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3' onClick={onNoteModalClick}>
                                         <IonText className='text-primary'><CgProfile className='mx-auto' /></IonText>
                                         <IonText className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
                                     </IonCol>
@@ -97,13 +96,12 @@ const Profile = ({ showProfile = false }) => {
                                 </IonText>
                             </IonRow>
                         </IonContent>
-                        <LoginModal showLogin={showLoginModal} />
-                        <AddressModal showAddress={showAddressModal} />
+                        <CheckOut showLogin={showLoginModal} />
+                        <MyAddress showMyAddress={showAddressModal} />
                         <OrderList showOrderList={showOrderListModal} />
                         <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
                         <WishListModal showWishListModal={showWishListModal} />
-                        <WalletModal showWalletModal={showWalletModal}/>
-                        <EditProfile showEditProfileModal={showEditProfileModal} setShowEditProfileModal={setShowAddressModal}/>
+                        <WalletModal showWalletModal={showWalletModal} />
                     </IonPage>
                 )
             }
@@ -111,4 +109,4 @@ const Profile = ({ showProfile = false }) => {
     )
 }
 
-export default Profile
+export default MyProfile
