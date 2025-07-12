@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonItem, IonLabel, IonInput, IonRadioGroup, IonRadio, IonImg, IonRow, IonCol, useIonRouter } from '@ionic/react'
+import { IonContent, IonPage, IonItem, IonLabel, IonInput, IonRadioGroup, IonRadio, IonImg, IonRow, IonCol } from '@ionic/react'
 import Header from '../../components/header'
 import Button from '../../components/common/Button'
 import { useState } from 'react'

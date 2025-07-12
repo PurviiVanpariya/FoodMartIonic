@@ -13,6 +13,7 @@ import OrderList from './OrderList';
 import NoteModal from './NoteModal';
 import WishListModal from './WishListModal';
 import WalletModal from './WalletModal';
+import EditProfile from './EditProfile';
 
 const Profile = ({ showProfile = false }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
@@ -21,6 +22,7 @@ const Profile = ({ showProfile = false }) => {
     const [showNoteModal, setShowNoteModal] = useState(false);
     const [showWishListModal, setShowWishListModal] = useState(false)
     const [showWalletModal, setShowWalletModal] = useState(false)
+    const [showEditProfileModal, setShowEditProfileModal] = useState(false)
 
     const onWishListClick = () => {
         setShowWishListModal(true)
@@ -34,11 +36,11 @@ const Profile = ({ showProfile = false }) => {
     const onAddressClick = () => {
         setShowAddressModal(true)
     }
-    const onNoteModalClick = () => {
-        setShowNoteModal(true)
-    }
     const onWalletModalClick = () => {
         setShowWalletModal(true)
+    }
+     const onEditProfileModalClick = () => {
+        setShowEditProfileModal(true)
     }
 
 
@@ -60,7 +62,7 @@ const Profile = ({ showProfile = false }) => {
                                         <IonText className='text-primary'><IoMdPaperPlane className='mx-auto' /></IonText>
                                         <IonText className='text-primary text-sm w-full text-center'>Edit Address</IonText>
                                     </IonCol>
-                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3' onClick={onNoteModalClick}>
+                                    <IonCol className='border-l p-4 text-center flex flex-col gap-3' onClick={onEditProfileModalClick}>
                                         <IonText className='text-primary'><CgProfile className='mx-auto' /></IonText>
                                         <IonText className='text-primary text-sm w-full text-center'>Edit Profile</IonText>
                                     </IonCol>
@@ -100,7 +102,8 @@ const Profile = ({ showProfile = false }) => {
                         <OrderList showOrderList={showOrderListModal} />
                         <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
                         <WishListModal showWishListModal={showWishListModal} />
-                        <WalletModal showWalletModal={showWalletModal} />
+                        <WalletModal showWalletModal={showWalletModal}/>
+                        <EditProfile showEditProfileModal={showEditProfileModal} setShowEditProfileModal={setShowAddressModal}/>
                     </IonPage>
                 )
             }
