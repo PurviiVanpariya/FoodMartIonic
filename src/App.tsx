@@ -33,7 +33,6 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import Home from './pages/home/Home';
-import Categories from './components/categories';
 import About from './pages/about/About';
 import ShopList from './pages/shoplist/ShopList';
 import SingleProduct from './pages/single-product/SingleProduct';
@@ -45,6 +44,7 @@ import OrderList from './pages/order-list/OrderList';
 import ContactUs from './pages/contact-us/ContactUs';
 import Faq from './pages/faq/Faq';
 import NotFound from './pages/not-found/NotFound';
+import Categories from './pages/categories/Categories';
 
 setupIonicReact();
 
@@ -56,7 +56,7 @@ const App: React.FC = () => (
           <Home />
         </Route>
         <Route exact path="/categories">
-          <Categories />
+          <Categories showCategory={true}/>
         </Route>
         <Route exact path="/shoplist">
           <ShopList showList={true} />

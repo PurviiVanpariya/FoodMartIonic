@@ -9,11 +9,12 @@ import { LuLock } from "react-icons/lu";
 import { useState } from 'react';
 import AddressModal from '../my-address/MyAddress';
 import OrderList from '../order-list/OrderList';
-import NoteModal from '../home/NoteModal';
-import WishListModal from '../home/WishListModal';
-import WalletModal from '../home/WalletModal';
+import WishListModal from './WishListModal';
+import WalletModal from './WalletModal';
 import CheckOut from '../checkout/CheckOut';
 import MyAddress from '../my-address/MyAddress';
+import NoteModal from './NoteModal';
+import Categories from '../categories/Categories';
 
 const MyProfile = ({ showMyProfile = false }) => {
 
@@ -23,6 +24,7 @@ const MyProfile = ({ showMyProfile = false }) => {
     const [showNoteModal, setShowNoteModal] = useState(false);
     const [showWishListModal, setShowWishListModal] = useState(false)
     const [showWalletModal, setShowWalletModal] = useState(false)
+    const [showCategoriesModal, setShowCategoriesModal] = useState(false)
 
     const onWishListClick = () => {
         setShowWishListModal(true)
@@ -42,13 +44,21 @@ const MyProfile = ({ showMyProfile = false }) => {
     const onWalletModalClick = () => {
         setShowWalletModal(true)
     }
+    const onCategoriesModalClick = () => {
+        setShowCategoriesModal(true)
+    }
 
     return (
         <>
             {
                 showMyProfile && (
                     <IonPage className='bg-white'>
-                        <Header Heading='My Profile' cartIcon={TfiMenuAlt} cartClassName='after:hidden' />
+                        <Header
+                            Heading='My Profile'
+                            cartIcon={TfiMenuAlt}
+                            cartClassName='after:hidden'
+                            onCartClick={onCategoriesModalClick}
+                        />
                         <IonContent className='ion-padding !bg-[#F4F5F8] bg-color space-y-6'>
                             <IonRow className='bg-white border shadow pt-10 pb-3 rounded-xl'>
                                 <IonRow>
@@ -102,6 +112,7 @@ const MyProfile = ({ showMyProfile = false }) => {
                         <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} source="profile" />
                         <WishListModal showWishListModal={showWishListModal} />
                         <WalletModal showWalletModal={showWalletModal} />
+                        <Categories showCategory={showCategoriesModal} />
                     </IonPage>
                 )
             }

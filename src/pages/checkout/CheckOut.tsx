@@ -8,9 +8,9 @@ import { IonButton, IonCard, IonCardContent, IonCardSubtitle, IonCol, IonContent
 import Header from '../../components/header'
 
 import './../home/Home.css'
-import NoteModal, { PaymentModal } from '../home/NoteModal';
 import { GoVerified } from 'react-icons/go';
-import CongratsModal from '../home/CongratsModal';
+import CongratsModal from '../my-profile/CongratsModal';
+import NoteModal, { PaymentModal } from '../my-profile/NoteModal';
 
 const CheckOut = ({ showLogin = false }) => {
 

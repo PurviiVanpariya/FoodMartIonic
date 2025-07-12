@@ -6,7 +6,7 @@ import { IoHomeOutline } from 'react-icons/io5'
 import { RiDeleteBin6Line, RiShareForwardLine } from "react-icons/ri";
 import { LiaEdit } from "react-icons/lia";
 import { BiShoppingBag } from 'react-icons/bi';
-import NoteModal from '../home/NoteModal'
+import NoteModal from '../my-profile/NoteModal'
 
 const addressData = [
     {

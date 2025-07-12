@@ -10,10 +10,11 @@ import './Home.css';
 import { useRef, useState } from 'react';
 
 import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
-import NoteModal from './NoteModal';
 import SingleProduct from '../single-product/SingleProduct';
 import Cart from '../cart/Cart';
 import ShopList from '../shoplist/ShopList';
+import NoteModal from '../my-profile/NoteModal';
+import Categories from '../categories/Categories';
 
 const products = [
   {
@@ -63,6 +64,12 @@ const Home: React.FC = () => {
 
   const onNoteModalClick = () => {
     setShowNoteModal(true);
+  };
+
+  const [showCategory, setShowCategory] = useState(false);
+
+  const onShowCategoryClick = () => {
+    setShowCategory(true);
   };
 
   const [showSingleProduct, setShowSingleProduct] = useState(false);
@@ -136,7 +143,7 @@ const Home: React.FC = () => {
             <IonText className='text-white mx-auto text-lg font-semibold'>
               Best of Everyday essentials
             </IonText>
-            <IonText className='text-white/70 mx-auto text-base'>
+            <IonText className='text-white/70 mx-auto text-base' onClick={onShowCategoryClick}>
               View All
             </IonText>
           </IonRow>
@@ -163,7 +170,7 @@ const Home: React.FC = () => {
             <IonText className='text-lg font-semibold'>
               Best Selling
             </IonText>
-            <IonText className='bg-[#e3641d] text-white rounded-md px-3 py-1 text-sm'>
+            <IonText className='bg-[#e3641d] text-white rounded-md px-3 py-1 text-sm' onClick={onShowCategoryClick}>
               View All
             </IonText>
           </IonRow>
@@ -190,6 +197,7 @@ const Home: React.FC = () => {
       <ShopList showList={showList} />
       <SingleProduct showSingleProduct={showSingleProduct} />
       <NoteModal showNoteModal={showNoteModal} setShowNoteModal={setShowNoteModal} />
+      <Categories showCategory={showCategory}/>
     </IonPage>
   );
 };

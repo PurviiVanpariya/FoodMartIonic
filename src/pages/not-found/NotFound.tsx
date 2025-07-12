@@ -1,8 +1,10 @@
-import { IonPage, IonContent, IonButton, IonImg, IonText, IonRow } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
+import { IonPage, IonContent, IonImg, IonText, IonRow, useIonRouter } from '@ionic/react';
 import Button from '../../components/common/Button';
 
 const NotFound = () => {
+
+    const router = useIonRouter();
+
     return (
         <IonPage>
             <IonContent>
@@ -15,9 +17,7 @@ const NotFound = () => {
                     <IonText className="text-primary w-full text-center mb-6 max-w-xs">
                         Unfortunately the page you are looking for has been moved or deleted.
                     </IonText>
-                    <Button label='GO TO HOME PAGE'
-                    >
-                    </Button>
+                    <Button label='GO TO HOME PAGE' onClick={() => router.push('/home')}></Button>
                 </IonRow>
             </IonContent>
         </IonPage>

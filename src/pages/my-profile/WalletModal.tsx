@@ -5,7 +5,7 @@ import { CgProfile } from 'react-icons/cg'
 import { IoWallet } from 'react-icons/io5'
 import Button from '../../components/common/Button'
 import { PaymentModal } from './NoteModal'
-import MyProfile from '../my-profile/MyProfile'
+import MyProfile from './MyProfile'
 
 const transactions = [
     { id: 1, shop: "xyz Shop", amount: -45 },

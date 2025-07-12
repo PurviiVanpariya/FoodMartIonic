@@ -1,8 +1,7 @@
 import { IonContent, IonImg, IonPage, IonRow, IonText } from '@ionic/react';
 import Button from '../../components/common/Button';
 import { useState } from 'react';
-import Profile from '../my-profile/MyProfile';
-import MyProfile from '../my-profile/MyProfile';
+import MyProfile from './MyProfile';
 
 type CongratsModalProps = {
     showCongrats?: boolean;
