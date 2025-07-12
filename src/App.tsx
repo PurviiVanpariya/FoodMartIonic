@@ -42,6 +42,9 @@ import CheckOut from './pages/checkout/CheckOut';
 import MyProfile from './pages/my-profile/MyProfile';
 import MyAddress from './pages/my-address/MyAddress';
 import OrderList from './pages/order-list/OrderList';
+import ContactUs from './pages/contact-us/ContactUs';
+import Faq from './pages/faq/Faq';
+import NotFound from './pages/not-found/NotFound';
 
 setupIonicReact();
 
@@ -55,29 +58,38 @@ const App: React.FC = () => (
         <Route exact path="/categories">
           <Categories />
         </Route>
-         <Route exact path="/shoplist">
-          <ShopList showList={true}/>
+        <Route exact path="/shoplist">
+          <ShopList showList={true} />
         </Route>
-         <Route exact path="/single-product">
-          <SingleProduct showSingleProduct={true}/>
+        <Route exact path="/single-product">
+          <SingleProduct showSingleProduct={true} />
         </Route>
-          <Route exact path="/cart">
+        <Route exact path="/cart">
           <Cart showCart={true} />
         </Route>
-          <Route exact path="/checkout">
+        <Route exact path="/checkout">
           <CheckOut showLogin={true} />
         </Route>
-           <Route exact path="/my-profile">
+        <Route exact path="/my-profile">
           <MyProfile showMyProfile={true} />
         </Route>
-         <Route exact path="/my-address">
+        <Route exact path="/my-address">
           <MyAddress showMyAddress={true} />
         </Route>
-         <Route exact path="/order-list">
+        <Route exact path="/order-list">
           <OrderList showOrderList={true} />
         </Route>
-         <Route exact path="/about">
+        <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/contact-us">
+          <ContactUs />
+        </Route>
+        <Route exact path="/faq">
+          <Faq />
+        </Route>
+        <Route exact path="/not-found">
+          <NotFound />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

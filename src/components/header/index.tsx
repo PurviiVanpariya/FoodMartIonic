@@ -14,7 +14,7 @@ import {
   useIonRouter,
   IonButton,
 } from '@ionic/react';
-import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location } from 'ionicons/icons';
+import { card, cart, clipboard, grid, heart, home, list, person, pricetag, location, mail, help, sad } from 'ionicons/icons';
 import { useState } from 'react';
 import { PiNotePencilDuotone } from "react-icons/pi";
 import { IconType } from 'react-icons';
@@ -49,7 +49,10 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
     { icon: person, path: "/my-profile", label: 'My Profile' },
     { icon: location, path: "/my-address", label: 'My Address' },
     { icon: clipboard, path: "/order-list", label: 'Order List' },
-    { icon: heart, path: "/about", label: 'About Us' }
+    { icon: heart, path: "/about", label: 'About Us' },
+    { icon: mail, path: "/contact-us", label: 'Contact Us' },
+    { icon: help, path: "/faq", label: 'FAQ' },
+    { icon: sad, path: "/not-found", label: '404 Page Not Found' }
   ]
 
   const router = useIonRouter();
