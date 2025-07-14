@@ -20,7 +20,7 @@ import { PiNotePencilDuotone } from "react-icons/pi";
 import { IconType } from 'react-icons';
 import "./Header.css";
 import { GoArrowLeft } from "react-icons/go";
-
+import { useLocation } from 'react-router';
 
 type HeaderProps = {
   EditIcon?: boolean;
@@ -35,36 +35,34 @@ type HeaderProps = {
   showBackButton?: boolean;
 };
 
+const listItem = [
+  { icon: home, path: "/home", label: 'Homepage' },
+  { icon: list, path: "/categories", label: 'Categories' },
+  { icon: grid, path: "/shoplist", label: 'Shop List' },
+  { icon: pricetag, path: "/single-product", label: 'Single Product' },
+  { icon: cart, path: "/cart", label: 'Shopping Cart' },
+  { icon: card, path: "/checkout", label: 'Checkout' },
+  { icon: person, path: "/my-profile", label: 'My Profile' },
+  { icon: location, path: "/my-address", label: 'My Address' },
+  { icon: clipboard, path: "/order-list", label: 'Order List' },
+  { icon: heart, path: "/about", label: 'About Us' },
+  { icon: mail, path: "/contact-us", label: 'Contact Us' },
+  { icon: help, path: "/faq", label: 'FAQ' },
+  { icon: sad, path: "/not-found", label: '404 Page Not Found' }
+]
+
 const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassName, onCartClick, EditIcon = false, onNoteClick, showBackButton, onBackClick }: HeaderProps) => {
 
   const [searchTerm,] = useState("");
-
-  const listItem = [
-    { icon: home, path: "/home", label: 'Homepage' },
-    { icon: list, path: "/categories", label: 'Categories' },
-    { icon: grid, path: "/shoplist", label: 'Shop List' },
-    { icon: pricetag, path: "/single-product", label: 'Single Product' },
-    { icon: cart, path: "/cart", label: 'Shopping Cart' },
-    { icon: card, path: "/checkout", label: 'Checkout' },
-    { icon: person, path: "/my-profile", label: 'My Profile' },
-    { icon: location, path: "/my-address", label: 'My Address' },
-    { icon: clipboard, path: "/order-list", label: 'Order List' },
-    { icon: heart, path: "/about", label: 'About Us' },
-    { icon: mail, path: "/contact-us", label: 'Contact Us' },
-    { icon: help, path: "/faq", label: 'FAQ' },
-    { icon: sad, path: "/not-found", label: '404 Page Not Found' }
-  ]
-
   const router = useIonRouter();
+  const loc = useLocation();
 
   const handleNavigation = (path: string) => {
-    router.push(path);
+    router.push(path, "root");
   };
-
 
   return (
     <>
-
       <IonMenu contentId="main-content">
         <IonImg
           src="https://askdemo-c24d7.web.app/assets/user.jpg"
@@ -77,18 +75,22 @@ const Header = ({ SubHeading, Heading, cartIcon, searchbar = false, cartClassNam
             <IonText className="text-primary mb-6">iamosahan@gmail.com</IonText>
           </IonRow>
           <IonList>
-            {listItem.map((item, index) => (
-              <IonItem
-                key={index}
-                button
-                onClick={() => handleNavigation(item.path)}
-                lines="none"
-                className="text-primary listMenu hover:bg-zinc-100 transition-all duration-500 rounded-md"
-              >
-                <IonIcon icon={typeof item.icon === 'string' ? item.icon : undefined} slot="start" className="text-xl" />
-                <IonLabel className='font-semibold'>{item.label}</IonLabel>
-              </IonItem>
-            ))}
+            {listItem.map((item, index) => {
+              const isActive = loc.pathname === item.path;
+
+              return (
+                <IonItem
+                  key={index}
+                  button
+                  onClick={() => handleNavigation(item.path)}
+                  lines="none"
+                  className={`listMenu transition-all duration-500 rounded-md ${isActive ? 'bg-[#E9612520] hover:bg-[#E9612530] !text-[#E96125] hover:!text-[#E96125]' : 'hover:bg-zinc-50'}`}
+                >
+                  <IonIcon icon={typeof item.icon === 'string' ? item.icon : undefined} slot="start" className={`text-primary text-xl ${isActive && "!text-[#E96125]"}`} />
+                  <IonLabel className={`font-semibold ${isActive && "!text-[#E96125]"}`}>{item.label}</IonLabel>
+                </IonItem>
+              );
+            })}
           </IonList>
         </IonContent>
       </IonMenu>
